@@ -8,7 +8,16 @@ const int scale = 1000;
 
 static Sprite* createIndicator(unsigned int size)
 {
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 	int pixels[size][size];
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	//动态开辟空间  
+	int **pixels = new int*[size]; //开辟行  
+	for (int i = 0; i < size; i++)
+	{
+		pixels[i] = new int[size];
+	} //开辟列  
+#endif 
     
 	for (int i = 0; i < size; ++i)
     {
@@ -23,6 +32,14 @@ static Sprite* createIndicator(unsigned int size)
                           Size(size, size));
     Sprite* sprite = Sprite::createWithTexture(texture);
     texture->release();
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+	//释放开辟的资源  
+	for (int i = 0; i < size; i++)
+	{
+		delete[] pixels[i];
+	}
+	delete[] pixels;
+#endif
     return sprite;
 }
 

@@ -435,9 +435,10 @@ bool LyfTableViewCell::getTouchEnabled()
     return m_bIsTouchEnabled;
 }
 
-
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 #pragma mark -
 #pragma mark 选中特效模块
+#endif
 
 void LyfTableViewCell::setPitchOn(bool var)
 {
@@ -463,10 +464,10 @@ bool LyfTableViewCell::getPitchOn()
 {
     return m_pitchOn;
 }
-
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
 #pragma mark -
 #pragma mark 删除按钮模块
-
+#endif
 void LyfTableViewCell::showDelBtn()
 {
     
