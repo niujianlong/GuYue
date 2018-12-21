@@ -21,7 +21,7 @@ void HRocker::setJoystickPositionChangeHandler(JoystickHandler handler)
     _handler = handler;
 }
 
-//åˆ›å»ºæ‘‡æ†(æ‘‡æ†çš„æ“ä½œé¢˜å›¾ç‰‡èµ„æºåï¼Œæ‘‡æ†èƒŒæ™¯å›¾ç‰‡èµ„æºåï¼Œèµ·å§‹åæ ‡)
+//´´½¨Ò¡¸Ë(Ò¡¸ËµÄ²Ù×÷ÌâÍ¼Æ¬×ÊÔ´Ãû£¬Ò¡¸Ë±³¾°Í¼Æ¬×ÊÔ´Ãû£¬ÆğÊ¼×ø±ê)
 HRocker* HRocker::createHRocker(const char *rockerImageName,const char *rockerBGImageName,Point position)
 {
     HRocker *layer = HRocker::create();
@@ -35,7 +35,7 @@ HRocker* HRocker::createHRocker(const char *rockerImageName,const char *rockerBG
     return NULL;
 }
 
-//è‡ªå®šä¹‰åˆå§‹åŒ–å‡½æ•°
+//×Ô¶¨Òå³õÊ¼»¯º¯Êı
 void HRocker::rockerInit(const char* rockerImageName,const char* rockerBGImageName,Point position)
 {
     Sprite *spRockerBG = Sprite::create(rockerBGImageName);
@@ -50,10 +50,10 @@ void HRocker::rockerInit(const char* rockerImageName,const char* rockerBGImageNa
     
     rockerBGPosition = position;
     rockerBGR = spRockerBG->getContentSize().width*0.4;//
-    rocketDirection=-1;//è¡¨ç¤ºæ‘‡æ†æ–¹å‘ä¸å˜
+    rocketDirection=-1;//±íÊ¾Ò¡¸Ë·½Ïò²»±ä
 }
 
-//å¯åŠ¨æ‘‡æ†(æ˜¾ç¤ºæ‘‡æ†ã€ç›‘å¬æ‘‡æ†è§¦å±äº‹ä»¶)
+//Æô¶¯Ò¡¸Ë(ÏÔÊ¾Ò¡¸Ë¡¢¼àÌıÒ¡¸Ë´¥ÆÁÊÂ¼ş)
 void HRocker::startRocker(bool _isStopOther)
 {
     Sprite *rocker = (Sprite*)this->getChildByTag(tag_rocker);
@@ -72,7 +72,7 @@ void HRocker::startRocker(bool _isStopOther)
     
 }
 
-//åœæ­¢æ‘‡æ†(éšè—æ‘‡æ†ï¼Œå–æ¶ˆæ‘‡æ†çš„è§¦å±ç›‘å¬)
+//Í£Ö¹Ò¡¸Ë(Òş²ØÒ¡¸Ë£¬È¡ÏûÒ¡¸ËµÄ´¥ÆÁ¼àÌı)
 //void HRocker::stopRocker()
 //{
 //    CCSprite *rocker = (CCSprite *)this->getChildByTag(tag_rocker);
@@ -85,7 +85,7 @@ void HRocker::startRocker(bool _isStopOther)
 //}
 
 
-//è·å–å½“å‰æ‘‡æ†ä¸ç”¨æˆ·è§¦å±ç‚¹çš„è§’åº¦
+//»ñÈ¡µ±Ç°Ò¡¸ËÓëÓÃ»§´¥ÆÁµãµÄ½Ç¶È
 float HRocker::getRad(Point pos1,Point pos2)
 {
     float px1 = pos1.x;
@@ -93,17 +93,17 @@ float HRocker::getRad(Point pos1,Point pos2)
     float px2 = pos2.x;
     float py2 = pos2.y;
     
-    //å¾—åˆ°ä¸¤ç‚¹xçš„è·ç¦»
+    //µÃµ½Á½µãxµÄ¾àÀë
     float x = px2 - px1;
-    //å¾—åˆ°ä¸¤ç‚¹yçš„è·ç¦»
+    //µÃµ½Á½µãyµÄ¾àÀë
     float y = py1 - py2;
-    //ç®—å‡ºæ–œè¾¹é•¿åº¦
+    //Ëã³öĞ±±ß³¤¶È
     float xie = sqrt(pow(x,2) + pow(y,2));
-    //å¾—åˆ°è¿™ä¸ªè§’åº¦çš„ä½™å¼¦å€¼(é€šè¿‡ä¸‰è§’å‡½æ•°ä¸­çš„åº—é‡Œï¼šè§’åº¦ä½™å¼¦å€¼=æ–œè¾¹/æ–œè¾¹)
+    //µÃµ½Õâ¸ö½Ç¶ÈµÄÓàÏÒÖµ(Í¨¹ıÈı½Çº¯ÊıÖĞµÄµêÀï£º½Ç¶ÈÓàÏÒÖµ=Ğ±±ß/Ğ±±ß)
     float cosAngle = x / xie;
-    //é€šè¿‡åä½™å¼¦å®šç†è·å–åˆ°æœŸè§’åº¦çš„å¼§åº¦
+    //Í¨¹ı·´ÓàÏÒ¶¨Àí»ñÈ¡µ½ÆÚ½Ç¶ÈµÄ»¡¶È
     float rad = acos(cosAngle);
-    //æ³¨æ„ï¼šå½“è§¦å±çš„ä½ç½®Yåæ ‡<æ‘‡æ†çš„Yåæ ‡ï¼Œæˆ‘ä»¬è¦å»åå€¼-0~-180
+    //×¢Òâ£ºµ±´¥ÆÁµÄÎ»ÖÃY×ø±ê<Ò¡¸ËµÄY×ø±ê£¬ÎÒÃÇÒªÈ¥·´Öµ-0~-180
     if (py2 < py1)
     {
         rad = -rad;
@@ -115,7 +115,7 @@ Point getAngelePosition(float r,float angle){
     return Point(r*cos(angle),r*sin(angle));
 }
 
-//æŠ¬èµ·äº‹ä»¶
+//Ì§ÆğÊÂ¼ş
 bool HRocker::onTouchBegan(Touch *pTouch, Event *pEvent)
 {
     Point point = pTouch->getLocation();
@@ -132,7 +132,7 @@ bool HRocker::onTouchBegan(Touch *pTouch, Event *pEvent)
     }
     return isCanMove;
 }
-//ç§»åŠ¨äº‹ä»¶
+//ÒÆ¶¯ÊÂ¼ş
 void HRocker::onTouchMoved(Touch *pTouch, Event *pEvent)
 {
     if (!isCanMove)
@@ -141,30 +141,30 @@ void HRocker::onTouchMoved(Touch *pTouch, Event *pEvent)
     }
     Point point = pTouch->getLocation();
     Sprite *rocker = (Sprite *)this->getChildByTag(tag_rocker);
-    //å¾—åˆ°æ‘‡æ†ä¸è§¦å±ç‚¹æ‰€å½¢æˆçš„è§’åº¦
+    //µÃµ½Ò¡¸ËÓë´¥ÆÁµãËùĞÎ³ÉµÄ½Ç¶È
     float angle = getRad(rockerBGPosition,point);
-    //åˆ¤æ–­ä¸¤ä¸ªåœ†çš„åœ†å¿ƒè·æ˜¯å¦å¤§äºæ‘‡æ†èƒŒæ™¯çš„åŠå¾„
+    //ÅĞ¶ÏÁ½¸öÔ²µÄÔ²ĞÄ¾àÊÇ·ñ´óÓÚÒ¡¸Ë±³¾°µÄ°ë¾¶
     if (sqrt(pow((rockerBGPosition.x - point.x),2) + pow((rockerBGPosition.y - point.y),2)) >= rockerBGR)
     {
         
-        //ä¿è¯å†…éƒ¨å°åœ†è¿åŠ¨çš„é•¿åº¦é™åˆ¶
+        //±£Ö¤ÄÚ²¿Ğ¡Ô²ÔË¶¯µÄ³¤¶ÈÏŞÖÆ
         rocker->setPosition(getAngelePosition(rockerBGR,angle)+Point(rockerBGPosition.x,rockerBGPosition.y));
         //  CCLOG("touch");
     }
     else
     {
-        //å½“æ²¡æœ‰è¶…è¿‡ï¼Œè®©æ‘‡æ†è·Ÿéšç”¨æˆ·è§¦å±ç‚¹ç§»åŠ¨å³å¯
+        //µ±Ã»ÓĞ³¬¹ı£¬ÈÃÒ¡¸Ë¸úËæÓÃ»§´¥ÆÁµãÒÆ¶¯¼´¿É
         rocker->setPosition(point);
         //CCLOG("touch");
     }
     
-    //åˆ¤æ–­æ–¹å‘
+    //ÅĞ¶Ï·½Ïò
     this->updateDirectionForTouchLocation(point);
     
     
     
 }
-// è®¡ç®—è§¦æ‘¸ç‚¹åˆ°æ–¹å‘é”®ä¸­å¿ƒè·ç¦»å€¼ï¼Œè½¬æ¢æˆè§’åº¦ï¼Œå¾—åˆ°æ­£ç¡®çš„æ–¹å‘å€¼ï¼Œç„¶åä¼ é€’å€¼åˆ°å§”æ‰˜
+// ¼ÆËã´¥Ãşµãµ½·½Ïò¼üÖĞĞÄ¾àÀëÖµ£¬×ª»»³É½Ç¶È£¬µÃµ½ÕıÈ·µÄ·½ÏòÖµ£¬È»ºó´«µİÖµµ½Î¯ÍĞ
 void HRocker::updateDirectionForTouchLocation(Point location)
 {
     /*
@@ -230,7 +230,7 @@ void HRocker::updateDirectionForTouchLocation(Point location)
 }
 
 
-//ç¦»å¼€äº‹ä»¶
+//Àë¿ªÊÂ¼ş
 void HRocker::onTouchEnded(Touch *pTouch, Event *pEvent)
 {
     if (!isCanMove)
@@ -249,27 +249,27 @@ void HRocker::onTouchEnded(Touch *pTouch, Event *pEvent)
 }
 //void HRocker::update(float dt)
 //{
-//    //åˆ¤æ–­æ˜¯å¦æŒ‰ä¸‹æ‘‡æ†åŠå…¶ç±»å‹
+//    //ÅĞ¶ÏÊÇ·ñ°´ÏÂÒ¡¸Ë¼°ÆäÀàĞÍ
 //    //    switch(rocker->rocketDirection)
 //    //    {
 //    //        case 1:
-//    //            hero->SetAnimation("run_animation.plist","run_animation.png","run_",8,rocker->rocketRun);//"run_"ä¸ºrun_animation.pngé›†åˆå›¾ç‰‡ä¸­æ¯å¼ å›¾ç‰‡çš„å…¬å…±åç§°éƒ¨åˆ†
-//    //            hero->setPosition(ccp(hero->getPosition().x+1,hero->getPosition().y)); //å‘å³èµ°
+//    //            hero->SetAnimation("run_animation.plist","run_animation.png","run_",8,rocker->rocketRun);//"run_"Îªrun_animation.png¼¯ºÏÍ¼Æ¬ÖĞÃ¿ÕÅÍ¼Æ¬µÄ¹«¹²Ãû³Æ²¿·Ö
+//    //            hero->setPosition(ccp(hero->getPosition().x+1,hero->getPosition().y)); //ÏòÓÒ×ß
 //    //            break;
 //    //        case  2:
-//    //            hero->SetAnimation("run_animation.plist","run_animation.png","run_",8,rocker->rocketRun);//"run_"ä¸ºrun_animation.pngé›†åˆå›¾ç‰‡ä¸­æ¯å¼ å›¾ç‰‡çš„å…¬å…±åç§°éƒ¨åˆ†
-//    //            hero->setPosition(ccp(hero->getPosition().x, hero->getPosition().y+1));   //å‘ä¸Šèµ°
+//    //            hero->SetAnimation("run_animation.plist","run_animation.png","run_",8,rocker->rocketRun);//"run_"Îªrun_animation.png¼¯ºÏÍ¼Æ¬ÖĞÃ¿ÕÅÍ¼Æ¬µÄ¹«¹²Ãû³Æ²¿·Ö
+//    //            hero->setPosition(ccp(hero->getPosition().x, hero->getPosition().y+1));   //ÏòÉÏ×ß
 //    //            break;
 //    //        case 3:
-//    //            hero->SetAnimation("run_animation.plist","run_animation.png","run_",8,rocker->rocketRun);//"run_"ä¸ºrun_animation.pngé›†åˆå›¾ç‰‡ä¸­æ¯å¼ å›¾ç‰‡çš„å…¬å…±åç§°éƒ¨åˆ†
-//    //            hero->setPosition(ccp(hero->getPosition().x-1,hero->getPosition().y));   //å‘å·¦èµ°
+//    //            hero->SetAnimation("run_animation.plist","run_animation.png","run_",8,rocker->rocketRun);//"run_"Îªrun_animation.png¼¯ºÏÍ¼Æ¬ÖĞÃ¿ÕÅÍ¼Æ¬µÄ¹«¹²Ãû³Æ²¿·Ö
+//    //            hero->setPosition(ccp(hero->getPosition().x-1,hero->getPosition().y));   //Ïò×ó×ß
 //    //            break;
 //    //        case 4:
-//    //            hero->SetAnimation("run_animation.plist","run_animation.png","run_",8,rocker->rocketRun);//"run_"ä¸ºrun_animation.pngé›†åˆå›¾ç‰‡ä¸­æ¯å¼ å›¾ç‰‡çš„å…¬å…±åç§°éƒ¨åˆ†
-//    //            hero->setPosition(ccp(hero->getPosition().x,hero->getPosition().y-1));   //å‘ä¸‹èµ°
+//    //            hero->SetAnimation("run_animation.plist","run_animation.png","run_",8,rocker->rocketRun);//"run_"Îªrun_animation.png¼¯ºÏÍ¼Æ¬ÖĞÃ¿ÕÅÍ¼Æ¬µÄ¹«¹²Ãû³Æ²¿·Ö
+//    //            hero->setPosition(ccp(hero->getPosition().x,hero->getPosition().y-1));   //ÏòÏÂ×ß
 //    //            break;
 //    //        default:
-//    //            hero->StopAnimation();//åœæ­¢æ‰€æœ‰åŠ¨ç”»å’Œè¿åŠ¨
+//    //            hero->StopAnimation();//Í£Ö¹ËùÓĞ¶¯»­ºÍÔË¶¯
 //    //            break;
 //    //            
 //    //    }

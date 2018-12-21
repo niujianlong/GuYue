@@ -227,16 +227,16 @@ void NpcFigure::onTouchEnded(Touch *pTouch, Event *pEvent)
     //LAlertView* alertView = LAlertView::create("", m_npcInfo->getSentence().c_str());
     //alertView->show(this, Alert_selector(NpcFigure::alertCallBack));
     
-    // å®šä¹‰ä¸€ä¸ªå¼¹å‡ºå±‚ï¼Œä¼ å…¥ä¸€å¼ èƒŒæ™¯å›¾ç‰‡
+    // ¶¨ÒåÒ»¸öµ¯³ö²ã£¬´«ÈëÒ»ÕÅ±³¾°Í¼Æ¬
     PopupLayer* popup = PopupLayer::create("ui/alert_backGround.png");
-    // ContentSizeæ˜¯å¯é€‰çš„è®¾ç½®ï¼Œå¯ä»¥ä¸è®¾ç½®ï¼Œå¦‚æœè®¾ç½®åˆ™æŠŠå®ƒå½“åš9å›¾ç¼©æ”¾
+    // ContentSizeÊÇ¿ÉÑ¡µÄÉèÖÃ£¬¿ÉÒÔ²»ÉèÖÃ£¬Èç¹ûÉèÖÃÔò°ÑËüµ±×ö9Í¼Ëõ·Å
     popup->setContentSize(Size(300, 200));
-    popup->setTitle("æç¤º");
+    popup->setTitle("ÌáÊ¾");
     popup->setContentText(m_npcInfo->getSentence().c_str(), 20, 50, 150);
-    // è®¾ç½®å›è°ƒå‡½æ•°ï¼Œå›è°ƒä¼ å›ä¸€ä¸ªCCNodeä»¥è·å–tagåˆ¤æ–­ç‚¹å‡»çš„æŒ‰é’®
-    // è¿™åªæ˜¯ä½œä¸ºä¸€ç§å°è£…å®ç°ï¼Œå¦‚æœä½¿ç”¨delegateé‚£å°±èƒ½å¤Ÿæ›´çµæ´»çš„æ§åˆ¶å‚æ•°äº†
+    // ÉèÖÃ»Øµ÷º¯Êı£¬»Øµ÷´«»ØÒ»¸öCCNodeÒÔ»ñÈ¡tagÅĞ¶Ïµã»÷µÄ°´Å¥
+    // ÕâÖ»ÊÇ×÷ÎªÒ»ÖÖ·â×°ÊµÏÖ£¬Èç¹ûÊ¹ÓÃdelegateÄÇ¾ÍÄÜ¹»¸üÁé»îµÄ¿ØÖÆ²ÎÊıÁË
     popup->setCallBackFunc(this, callfuncN_selector(NpcFigure::buttonCallback));
-    //æ·»åŠ æŒ‰é’®ï¼Œè®¾ç½®å›¾ç‰‡ã€æ–‡å­—ï¼Œtagä¿¡æ¯
+    //Ìí¼Ó°´Å¥£¬ÉèÖÃÍ¼Æ¬¡¢ÎÄ×Ö£¬tagĞÅÏ¢
     popup->addButton("ui/queding01.png", "ui/queding02.png", "Ok", 0);
     //popup->addButton("ui/btn_normal.png", "ui/btn_selected.png", "Cancel", 1);
     popup->show();
@@ -245,7 +245,7 @@ void NpcFigure::onTouchEnded(Touch *pTouch, Event *pEvent)
     
 }
 void NpcFigure::buttonCallback(cocos2d::Node *pNode){
-    // æ‰“å° tag 0ï¼Œ ç¡®å®šï¼Œ1 ï¼Œå–æ¶ˆ
+    // ´òÓ¡ tag 0£¬ È·¶¨£¬1 £¬È¡Ïû
     //CCLog("button call back. tag: %d", pNode->getTag());
     int tag=pNode->getTag();
     if (tag==0) {

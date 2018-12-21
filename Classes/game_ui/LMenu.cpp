@@ -165,7 +165,7 @@ bool LMenu::setBackGround(LMenuTouchState touchState, CCRGBAProtocol *var){
     {
         this->addChild(node,-1);
         
-        if (!m_preferredSize.equals(CCSizeZero) && !m_preferredSize.equals(node->getContentSize()))
+        if (!m_preferredSize.equals(Size::ZERO) && !m_preferredSize.equals(node->getContentSize()))//change to Size::ZERO by njl
         {
             if (Scale9Sprite* _var=dynamic_cast<Scale9Sprite*>(node))
             {

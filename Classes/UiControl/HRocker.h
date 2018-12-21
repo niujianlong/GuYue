@@ -13,12 +13,12 @@
 
 using namespace cocos2d;
 
-//ç”¨äºæ ‡è¯†æ‘‡æ†ä¸æ‘‡æ†çš„èƒŒæ™¯
+//ÓÃÓÚ±êÊ¶Ò¡¸ËÓëÒ¡¸ËµÄ±³¾°
 typedef enum{
     tag_rocker,
     tag_rockerBG,
 }tagForHRocker;
-//ç”¨äºæ ‡è¯†æ‘‡æ†æ–¹å‘
+//ÓÃÓÚ±êÊ¶Ò¡¸Ë·½Ïò
 //typedef enum{
 //    FDirUp              = 8,
 //    FDirLeftAndUp       = 7,
@@ -35,38 +35,38 @@ class HRocker:public Layer
 public:
     HRocker(void);
     ~HRocker(void);
-    //å›è°ƒæ–¹æ³•
+    //»Øµ÷·½·¨
     typedef std::function<void(Point pTD)> JoystickHandler;
     //TouchEnded
     void setJoystickPositionChangeHandler(JoystickHandler);
     //void update(float delta);
-    //åˆ›å»ºæ‘‡æ†(æ‘‡æ†çš„æ“ä½œé¢˜å›¾ç‰‡èµ„æºåï¼Œæ‘‡æ†èƒŒæ™¯å›¾ç‰‡èµ„æºåï¼Œèµ·å§‹åæ ‡)
+    //´´½¨Ò¡¸Ë(Ò¡¸ËµÄ²Ù×÷ÌâÍ¼Æ¬×ÊÔ´Ãû£¬Ò¡¸Ë±³¾°Í¼Æ¬×ÊÔ´Ãû£¬ÆğÊ¼×ø±ê)
     static HRocker* createHRocker(const char *rockerImageName,const char *rockerBGImageName,Point position);
-    //å¯åŠ¨æ‘‡æ†(æ˜¾ç¤ºæ‘‡æ†ã€ç›‘å¬æ‘‡æ†è§¦å±äº‹ä»¶)
+    //Æô¶¯Ò¡¸Ë(ÏÔÊ¾Ò¡¸Ë¡¢¼àÌıÒ¡¸Ë´¥ÆÁÊÂ¼ş)
     void startRocker(bool _isStopOther);
-    //åœæ­¢æ‘‡æ†(éšè—æ‘‡æ†ï¼Œå–æ¶ˆæ‘‡æ†çš„è§¦å±ç›‘å¬)
+    //Í£Ö¹Ò¡¸Ë(Òş²ØÒ¡¸Ë£¬È¡ÏûÒ¡¸ËµÄ´¥ÆÁ¼àÌı)
     //void stopRocker();
-    //åˆ¤æ–­æ§åˆ¶æ†æ–¹å‘ï¼Œç”¨æ¥åˆ¤æ–­ç²¾çµä¸Šã€ä¸‹ã€å·¦ã€å³è¿åŠ¨
+    //ÅĞ¶Ï¿ØÖÆ¸Ë·½Ïò£¬ÓÃÀ´ÅĞ¶Ï¾«ÁéÉÏ¡¢ÏÂ¡¢×ó¡¢ÓÒÔË¶¯
     int rocketDirection;
-    //å½“å‰äººç‰©è¡Œèµ°æ–¹å‘,ç”¨æ¥åˆ¤æ–­ç²¾çµçš„æœå‘ï¼Œç²¾çµè„¸æœå³è¿˜æ˜¯æœå·¦
+    //µ±Ç°ÈËÎïĞĞ×ß·½Ïò,ÓÃÀ´ÅĞ¶Ï¾«ÁéµÄ³¯Ïò£¬¾«ÁéÁ³³¯ÓÒ»¹ÊÇ³¯×ó
     //bool rocketRun;
     CREATE_FUNC(HRocker);
 private:
     JoystickHandler _handler;
     //EventListenerTouchOneByOne* _touchEventListener;
-    //è‡ªå®šä¹‰åˆå§‹åŒ–å‡½æ•°
+    //×Ô¶¨Òå³õÊ¼»¯º¯Êı
     void rockerInit(const char* rockerImageName,const char* rockerBGImageName,Point position);
-    //æ˜¯å¦å¯æ“ä½œæ‘‡æ†
+    //ÊÇ·ñ¿É²Ù×÷Ò¡¸Ë
     bool isCanMove;
-    //è·å–å½“å‰æ‘‡æ†ä¸ç”¨æˆ·è§¦å±ç‚¹çš„è§’åº¦
+    //»ñÈ¡µ±Ç°Ò¡¸ËÓëÓÃ»§´¥ÆÁµãµÄ½Ç¶È
     float getRad(Point pos1,Point pos2);
-    //æ‘‡æ†èƒŒæ™¯çš„åæ ‡
+    //Ò¡¸Ë±³¾°µÄ×ø±ê
     Point rockerBGPosition;
-    //æ‘‡æ†èƒŒæ™¯çš„åŠå¾„
+    //Ò¡¸Ë±³¾°µÄ°ë¾¶
     float rockerBGR;
     Point m_sDirection;
-    // å½“å‰æ‰€æŒ‰ä¸‹çš„æ–¹å‘ã€‚è¿™æ˜¯ä¸€ä¸ªçŸ¢é‡ï¼Œ(-1.0, -1.0)æ˜¯å·¦ä¸‹æ–¹å‘ï¼Œ(1.0, 1.0)æ˜¯å³ä¸Šæ–¹å‘ã€‚
-    //è§¦å±äº‹ä»¶
+    // µ±Ç°Ëù°´ÏÂµÄ·½Ïò¡£ÕâÊÇÒ»¸öÊ¸Á¿£¬(-1.0, -1.0)ÊÇ×óÏÂ·½Ïò£¬(1.0, 1.0)ÊÇÓÒÉÏ·½Ïò¡£
+    //´¥ÆÁÊÂ¼ş
     virtual bool onTouchBegan(Touch *pTouch, Event *pEvent);
     virtual void onTouchMoved(Touch *pTouch, Event *pEvent);
     virtual void onTouchEnded(Touch *pTouch, Event *pEvent);

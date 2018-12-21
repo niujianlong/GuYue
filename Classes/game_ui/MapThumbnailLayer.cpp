@@ -150,8 +150,9 @@ void MapThumbnailMenu::update(float delay)
             if (enemyIndicator == NULL)
             {
                 enemyIndicator = createIndicator(2);
-                enemyIndicator->setColor(ccRED);
-                this->addChild(enemyIndicator, -1);
+                //enemyIndicator->setColor(ccRED);
+				enemyIndicator->setColor(Color3B::RED); //add by njl
+				this->addChild(enemyIndicator, -1);
                 m_enemyDic->setObject(enemyIndicator, key);
             }
             enemyIndicator->setPosition(Point(x, y));
@@ -275,7 +276,7 @@ MapThumbnailScrollView* MapThumbnailScrollView::create()
 
 void MapThumbnailScrollView::initWithMap()
 {
-    this->setAnchorPoint(CCPointZero);
+    this->setAnchorPoint(Point::ZERO);//change to Point::ZERO by njl
     this->setBounceable(false);
     
     Texture2D* texture = GAME_SCENE->getCurrBgMap()->getSmallMap()->getTexture();
@@ -286,7 +287,7 @@ void MapThumbnailScrollView::initWithMap()
     this->setContentSize(sprite->getContentSize());
     
     m_pEndPoint = createIndicator(8);
-    m_pEndPoint->setColor(ccYELLOW);
+    m_pEndPoint->setColor(Color3B::YELLOW);//add by njl
     //m_pContainer->addChild(m_pEndPoint);
     _container->addChild(m_pEndPoint);
     m_pEndPoint->setPosition(Point(-100, -100));

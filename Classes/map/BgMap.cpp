@@ -26,7 +26,7 @@ using namespace rapidjson;
 #pragma BgMap
 
 /*
- 20150106 ÊÆµÁîüËæâ ‰øÆÊîπjsonËß£Êûê
+ 20150106 ∂Œ…˙ª‘ –ﬁ∏ƒjsonΩ‚Œˆ
 */
 
 void BgMap::readGirdData()
@@ -56,13 +56,13 @@ void BgMap::readGirdData()
     unsigned int gHeight = json["mapGridH"].GetInt();
     m_gridSize = Size(gWidth, gHeight);
     MapPoint::setGridSize(m_gridSize);
-    m_gridRow = (unsigned int)ceilf(width/m_gridSize.width);//ÊúâÂ§öÂ∞ëÂàó
-    m_gridCol = (unsigned int)ceilf(height/m_gridSize.height);//ÊúâÂ§öÂ∞ëË°å
+    m_gridRow = (unsigned int)ceilf(width/m_gridSize.width);//”–∂‡…Ÿ¡–
+    m_gridCol = (unsigned int)ceilf(height/m_gridSize.height);//”–∂‡…Ÿ––
     
     //rapidjson::Value & arr = json["mapFlagArr"];
     this->initGridData(json["mapFlagArr"]);
     
-    unsigned int iWidth = json["divideBlockW"].GetInt();//ÂàíÂàÜÂùó
+    unsigned int iWidth = json["divideBlockW"].GetInt();//ªÆ∑÷øÈ
     unsigned int iHeight = json["divideBlockH"].GetInt();
     m_imageSize = Size(iWidth, iHeight);
     m_imageRow = (unsigned int)ceilf(width/m_imageSize.width);
@@ -102,17 +102,22 @@ void BgMap::readGoodsData()
             
             case TYPE_PROTAL:
             {
-                //‰º†ÈÄÅ
+                //¥´ÀÕ
                 int key = goods["itemSN"].GetInt();
                 int mapID = goods["portalToMap"].GetInt();
                 int born = goods["portalToPos"].GetInt();
                 Point point = Point(goods["itemPosX"].GetDouble(), goods["itemPosY"].GetDouble());
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
                 m_mapPassageway.push_back((PortalInformation){key, mapID, born, point});
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+				PortalInformation PortalInformationTemp = { key, mapID, born, point };
+				m_mapPassageway.push_back(PortalInformationTemp);
+#endif
             }
             break;
             case TYPE_BORN_POINT:
             {
-                //Âá∫ÁîüÂú∞
+                //≥ˆ…˙µÿ
                 int born = goods["itemSN"].GetInt();
                 Point point = Point(goods["itemPosX"].GetDouble(), goods["itemPosY"].GetDouble());
                 m_mapBornPoint[born] = point;
@@ -124,12 +129,17 @@ void BgMap::readGoodsData()
                 int key = goods["itemSN"].GetInt();
                 NPCDirectionType direction = (NPCDirectionType)goods["npcDirection"].GetInt();
                 Point point = Point(goods["itemPosX"].GetDouble(), goods["itemPosY"].GetDouble());
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
                 m_npcInfoVec.push_back((NpcInformation){key, direction, point});
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+				NpcInformation NpcInformationTemp = { key, direction, point };
+				m_npcInfoVec.push_back(NpcInformationTemp);
+#endif
             }
                 break;
             case TYPE_ENEMY:
             {
-                // Êïå‰∫∫
+                // µ–»À
                 unsigned int key = goods["itemSN"].GetUint();
                 Point point = Point(goods["itemPosX"].GetDouble(), goods["itemPosY"].GetDouble());
                 m_enemyMap.insert(std::multimap<unsigned int, MapPoint>::value_type(key, MapPoint(point)));
@@ -137,7 +147,7 @@ void BgMap::readGoodsData()
                 break;
             case TYPE_BACKGROUND_MUSIC:
             {
-                //ËÉåÊôØÈü≥‰πê
+                //±≥æ∞“Ù¿÷
                 unsigned int key = goods["itemSN"].GetUint();
                 char s[20];
                 sprintf(s, "music/400/%d.mp3", key);
@@ -201,9 +211,9 @@ bool BgMap::init()
     m_sMap->setAnchorPoint(Vec2::ZERO);
     this->addChild(m_sMap, BgMap::getZOrderZero(this));
     m_sMap->setScale(10/3.0f);
-    //ÂàùÂßãÂåñÂú∞ÂõæÂùó
+    //≥ı ºªØµÿÕºøÈ
     this->initBgMapFloorTile();
-    //ÁîüÊàê‰º†ÈÄÅÈó®
+    //…˙≥…¥´ÀÕ√≈
     this->initBgMapPassagewayImage();
     
     this->initNpcFigure();
@@ -244,7 +254,7 @@ void BgMap::initBgMapFloorTile()
             floorTile->setFloorTileFileName(CCString::createWithFormat("map/s%d/s%d_%d_%d.jpg", m_mapID, m_mapID, i, j));
 
             floorTile->setPosition(Point(m_imageSize.width*j, m_imageSize.height*i));
-            this->addChild(floorTile, BgMap::getZOrderZero(this));//zËΩ¥
+            this->addChild(floorTile, BgMap::getZOrderZero(this));//z÷·
             m_floorTileVec.push_back(floorTile);
         }
     }
@@ -257,8 +267,8 @@ void BgMap::initBgMapPassagewayImage()
     {
         Point point = MapPoint((*itr).point).getCCPointValue();
         
-        //ÁîüÊàê‰º†ÈÄÅÈó®
-        float value = BgMap::getZOrder(point);//zËΩ¥
+        //…˙≥…¥´ÀÕ√≈
+        float value = BgMap::getZOrder(point);//z÷·
         
         PortalSprite* sprite = PortalSprite::createWithPortalSprite("trans-");
         sprite->setPosition(point);
@@ -366,7 +376,7 @@ void BgMap::addChildPlayerLead(Node* node, int bornPoint)
 
 void BgMap::addChildPlayerLead(Node* node, Point point)
 {
-    float value = BgMap::getZOrder(this->getPosition());//zËΩ¥
+    float value = BgMap::getZOrder(this->getPosition());//z÷·
     m_playerLead = node;
     m_playerLead->setPosition(MapPoint(point).getCCPointValue());
     this->addChild(m_playerLead, value);

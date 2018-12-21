@@ -61,7 +61,7 @@ AttackSkillSystem::AttackSkillSystem()
     }
     
     
-    if (!m_doc.IsNull() && m_doc.IsArray())  //åˆ¤æ–­æ˜¯ä¸æ˜¯æ•°ç»„
+    if (!m_doc.IsNull() && m_doc.IsArray())  //ÅĞ¶ÏÊÇ²»ÊÇÊı×é
     {
         
         for(unsigned int i=0;i<m_doc.Size();++i)
