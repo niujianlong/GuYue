@@ -166,6 +166,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClCompile Include="..\Classes\game_ui\ChatInterface.cpp" />
     <ClCompile Include="..\Classes\game_ui\ChatInterfaceCell.cpp" />
     <ClCompile Include="..\Classes\game_ui\Direction.cpp" />
+    <ClCompile Include="..\Classes\game_ui\FontChina.cpp" />
     <ClCompile Include="..\Classes\game_ui\GameInfoUIController.cpp" />
     <ClCompile Include="..\Classes\game_ui\GameOptions.cpp" />
     <ClCompile Include="..\Classes\game_ui\GameTabBarMenu.cpp" />
@@ -222,6 +223,7 @@ xcopy /Y /Q "$(COCOS_X_ROOT)\cocos2d-x-3.10\prebuilt\win32\*.*" "$(OutDir)"
     <ClInclude Include="..\Classes\game_ui\ChatInterface.h" />
     <ClInclude Include="..\Classes\game_ui\ChatInterfaceCell.h" />
     <ClInclude Include="..\Classes\game_ui\Direction.h" />
+    <ClInclude Include="..\Classes\game_ui\FontChina.h" />
     <ClInclude Include="..\Classes\game_ui\GameInfoUIController.h" />
     <ClInclude Include="..\Classes\game_ui\GameOptions.h" />
     <ClInclude Include="..\Classes\game_ui\GameTabBarMenu.h" />

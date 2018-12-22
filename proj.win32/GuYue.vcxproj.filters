@@ -192,6 +192,9 @@
     <ClCompile Include="..\Classes\UiControl\SimpleDPad.cpp">
       <Filter>src\UiControl</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\game_ui\FontChina.cpp">
+      <Filter>src\game_ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -361,6 +364,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UiControl\SimpleDPad.h">
       <Filter>src\UiControl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\game_ui\FontChina.h">
+      <Filter>src\game_ui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
