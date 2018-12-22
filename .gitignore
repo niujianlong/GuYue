@@ -19,6 +19,14 @@ proj.win32/resource.h
 GuYue.ccs
 GuYue.cfg
 GuYue.udf
+CMakeLists.txt
+cocos2d/
+proj.android-studio/
+proj.linux/
+proj.win10/
+proj.win32/Release.win32/
+proj.win8.1-universal/
+
 
 # Prerequisites
 *.d
