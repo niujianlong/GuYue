@@ -29,7 +29,7 @@ bool RoleCreateLayer::init()
     Sprite * bj=Sprite::create("bjrole.png");
     bj->setPosition(winSize.width/2,winSize.height/2);
     this->addChild(bj);
-    Label *Label1 = Label::createWithTTF(FontChina::G2U("血腥、暴力、耐打"), "fonts/FZKATJW.ttf", 28);
+    Label *Label1 = Label::createWithTTF(FontChina::G2U("血腥、暴力、耐打"), "fonts/FZKATJW.ttf", 28);  //解决了中文在win32平台下不能显示的问题
     Label1->setPosition(Point(170,120));
     Label1->setColor(Color3B::RED);
     Label1->enableOutline(Color4B(124,66,24,255),2);

@@ -24,7 +24,7 @@ const char* FontChina::G2U(const char* gb2312)
 	memset(str, 0, len+1);    
 	WideCharToMultiByte(65001, 0, wstr, -1, str, len, NULL, NULL);    
 	if(wstr) delete[] wstr;    
-	return str;    
+	return str;    //这里没有对str进行内存的释放，会不会内存泄漏呢？
 	#endif
 
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)
