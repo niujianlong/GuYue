@@ -211,13 +211,14 @@ string TextureController::getTextureRoute(TexturePathType type, unsigned int num
     
     if (path.compare("") != 0)
     {
-        //      string str;
-        //      stringstream ss;
-        //      ss << number;
-        //      ss >> str;
+        string str;
+        stringstream ss;
+        ss << number;
+        ss >> str;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)  //下面的语句在vs中运行会出错
         char str[4];
         sprintf(str, "%d",number);
-        
+#endif        
         path += str;
     }
     
@@ -274,14 +275,16 @@ string TextureController::getTexturePath(TexturePathType type, unsigned int numb
     
     if (path.compare("") != 0)
     {
-        //      string str;
-        //      stringstream ss;
-        //      ss << number;
-        //      ss >> str;
+        string str;
+        stringstream ss;
+        ss << number;
+        ss >> str;
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MAC)  //下面的语句在vs中运行会出错
         char str[4];
         sprintf(str, "%d",number);
-        
+#endif       
         path += str;
+
     }
     
     return path;
