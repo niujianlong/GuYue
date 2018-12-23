@@ -72,6 +72,8 @@ private:
     void initWithMapThumbnail();
     
     bool onTouchBegan(Touch *pTouch, Event *pEvent);
+	//°´Å¥ÏìÓ¦º¯Êý
+	void HeadBtnHandle(Ref* pSender, Widget::TouchEventType type);
     
 private:
     
