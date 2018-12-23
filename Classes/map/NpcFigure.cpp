@@ -3,6 +3,7 @@
 #include "NpcFigure.h"
 //#include "LAlertView.h"
 #include "PopupLayer.h"
+#include "FontChina.h"
 
 NpcFigure::NpcFigure(unsigned int roleNumber, NPCDirectionType type)
 :m_npcInfo(NULL)
@@ -231,7 +232,7 @@ void NpcFigure::onTouchEnded(Touch *pTouch, Event *pEvent)
     PopupLayer* popup = PopupLayer::create("ui/alert_backGround.png");
     // ContentSize是可选的设置，可以不设置，如果设置则把它当做9图缩放
     popup->setContentSize(Size(300, 200));
-    popup->setTitle("提示");
+    popup->setTitle(FontChina::G2U("提示"));
     popup->setContentText(m_npcInfo->getSentence().c_str(), 20, 50, 150);
     // 设置回调函数，回调传回一个CCNode以获取tag判断点击的按钮
     // 这只是作为一种封装实现，如果使用delegate那就能够更灵活的控制参数了
