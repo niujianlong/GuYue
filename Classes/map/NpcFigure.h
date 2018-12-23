@@ -1,4 +1,4 @@
-
+﻿
 
 #ifndef __mir9__NpcFigure__
 #define __mir9__NpcFigure__
