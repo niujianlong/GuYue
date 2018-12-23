@@ -26,6 +26,8 @@ proj.linux/
 proj.win10/
 proj.win32/Release.win32/
 proj.win8.1-universal/
+.vs/
+SI/
 
 
 # Prerequisites

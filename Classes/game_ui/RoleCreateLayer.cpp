@@ -153,7 +153,7 @@ RoleCreateLayer::~RoleCreateLayer()
 void RoleCreateLayer::callBackEnter(Ref* obj)
 {
     
-    GameSocket::sendRoleCreate(this, m_roleID, "GuYue");//SOCKET
+    GameSocket::sendRoleCreate(this, m_roleID, "郭靖");//SOCKET
 }
 
 
