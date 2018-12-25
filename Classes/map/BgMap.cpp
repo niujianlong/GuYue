@@ -225,7 +225,7 @@ bool BgMap::init()
         CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(m_backGroundMusic.c_str(), true);
         CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.2f);
     }
-    
+	Vec2 mapAnchorpoint = this->getAnchorPoint();//add by njl ²âÊÔ·¢ÏÖmapAnchorpointÊÇ£¨0,0£©
     return true; 
 }
 
@@ -294,7 +294,6 @@ void BgMap::updateImageDisplay()
     Rect rect = this->getShowRect();
 
     Rect rect2 = this->getHideRect();
-    
     std::vector<BgMapFloorTile*>::iterator itr;
     for (itr=m_floorTileVec.begin(); itr!=m_floorTileVec.end(); itr++)
     {

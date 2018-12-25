@@ -86,6 +86,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
     auto scene = LoginScene::createScene();
+	//²âÊÔÄ¬ÈÏÃªµã
+	Node* nodeTest = Node::create();
+	Layer* layerTest = Layer::create();
+	Scene* sceneTest = Scene::create();
+	log("nodeTest-getAnchipoint = (%f,%f)", nodeTest->getAnchorPoint().x, nodeTest->getAnchorPoint().y);
+	log("layerTest-getAnchipoint = (%f,%f)", layerTest->getAnchorPoint().x, layerTest->getAnchorPoint().y);
+	log("sceneTest-getAnchipoint = (%f,%f)", sceneTest->getAnchorPoint().x, sceneTest->getAnchorPoint().y);
 
     // run
     director->runWithScene(scene);
