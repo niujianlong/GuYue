@@ -90,10 +90,18 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	Node* nodeTest = Node::create();
 	Layer* layerTest = Layer::create();
 	Scene* sceneTest = Scene::create();
+	Menu* menuTest = Menu::create();
+	Sprite* spriteTest = Sprite::create();
 	log("nodeTest-getAnchipoint = (%f,%f)", nodeTest->getAnchorPoint().x, nodeTest->getAnchorPoint().y);
 	log("layerTest-getAnchipoint = (%f,%f)", layerTest->getAnchorPoint().x, layerTest->getAnchorPoint().y);
 	log("sceneTest-getAnchipoint = (%f,%f)", sceneTest->getAnchorPoint().x, sceneTest->getAnchorPoint().y);
-
+	log("menuTest-getAnchipoint = (%f,%f)", menuTest->getAnchorPoint().x, menuTest->getAnchorPoint().y);
+	log("spriteTest-getAnchipoint = (%f,%f)", spriteTest->getAnchorPoint().x, spriteTest->getAnchorPoint().y);
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	auto red = LayerColor::create(Color4B(255, 100, 100, 128), visibleSize.width / 2, visibleSize.height / 2);
+	red->ignoreAnchorPointForPosition(false);
+	red->setAnchorPoint(Point(0.5, 0.5));
+	red->setPosition(Point(visibleSize.width / 2 , visibleSize.height / 2 ));
     // run
     director->runWithScene(scene);
 
