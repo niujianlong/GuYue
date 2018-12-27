@@ -47,6 +47,14 @@ bool  RoleInfo::init()
 		cccontrol_selector(GameInfoUIController::removeBigMenuAndButton),
 		Control::EventType::TOUCH_UP_INSIDE);
 
+	//添加触控消息
+	static int cishu = 0;
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("RoleInfo touch began %d", cishu++); return true; };
+	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+	listener->setSwallowTouches(true);//不向下传递触摸 add by njl
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, m_pBg);
+
 	return true;
 }
 Node* RoleInfo::getNode()
