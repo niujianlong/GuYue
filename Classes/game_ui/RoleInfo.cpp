@@ -35,6 +35,18 @@ bool  RoleInfo::init()
 	这样的话这个Node就可以显示在屏幕中心的位置*/
 	m_pNode->ignoreAnchorPointForPosition(false); 
 	m_pNode->setAnchorPoint(Vec2(0.5, 0.5));
+
+	m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
+	ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
+	button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
+	button->setPreferredSize(Size(57, 58));
+	button->setPosition(ccpSub(ccpAdd(m_pBg->getPosition(), m_pBg->getContentSize()), button->getContentSize() / 2));
+	m_pBg->addChild(button);
+
+	button->addTargetWithActionForControlEvents(GAME_UILAYER,
+		cccontrol_selector(GameInfoUIController::removeBigMenuAndButton),
+		Control::EventType::TOUCH_UP_INSIDE);
+
 	return true;
 }
 Node* RoleInfo::getNode()
