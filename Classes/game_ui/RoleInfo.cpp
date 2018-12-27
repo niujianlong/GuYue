@@ -53,7 +53,7 @@ bool  RoleInfo::init()
 	listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("RoleInfo touch began %d", cishu++); return true; };
 	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 	listener->setSwallowTouches(true);//不向下传递触摸 add by njl
-	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, m_pBg);
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, m_pBg);//这里必须是m_pBg，改成this照样会向下传递
 
 	return true;
 }
