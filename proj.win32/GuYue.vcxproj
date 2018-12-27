@@ -176,6 +176,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\game_ui\ProgressAutomatic.cpp" />
     <ClCompile Include="..\Classes\game_ui\PropColumn.cpp" />
     <ClCompile Include="..\Classes\game_ui\RoleCreateLayer.cpp" />
+    <ClCompile Include="..\Classes\game_ui\RoleInfo.cpp" />
     <ClCompile Include="..\Classes\game_ui\SkillTableView.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\LoginScene.cpp" />
@@ -233,6 +234,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\game_ui\ProgressAutomatic.h" />
     <ClInclude Include="..\Classes\game_ui\PropColumn.h" />
     <ClInclude Include="..\Classes\game_ui\RoleCreateLayer.h" />
+    <ClInclude Include="..\Classes\game_ui\RoleInfo.h" />
     <ClInclude Include="..\Classes\game_ui\SkillTableView.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\LoginScene.h" />

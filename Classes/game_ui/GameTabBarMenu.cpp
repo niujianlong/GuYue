@@ -5,6 +5,9 @@
 #include "SkillTableView.h"
 #include "PropColumn.h"
 #include "GameOptions.h"
+#include "RoleInfo.h"
+#include "cocostudio/CocoStudio.h"
+#include "ui/CocosGUI.h"
 
 #define WINSIZE Director::getInstance()->getWinSize()
 
@@ -106,7 +109,9 @@ bool GameTabBarMenu::init()
 
 void GameTabBarMenu::showRoleInfo(Ref* sender , Control::EventType controlEvent)
 {
-
+	RoleInfo* layer = RoleInfo::create();
+	//Node* m_pNode = CSLoader::createNode("ui/roleInfo/RoleInfoPanel.csb");
+	GAME_UILAYER->addBigMenu(layer->getNode());
 }
 
 void GameTabBarMenu::showBackPack(Ref* sender , Control::EventType controlEvent)
