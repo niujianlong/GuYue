@@ -28,6 +28,7 @@ void RoleInfo::onEnterTransitionDidFinish()
 #endif
 bool  RoleInfo::init()
 {
+	FileUtils::getInstance()->addSearchPath("ui\roleInfo");
 	m_pNode = CSLoader::createNode("ui/roleInfo/RoleInfoPanel.csb");
 	/*//由于addBigMenu时候把这个Node放在了屏幕中心的位置
 	所以这里要强行把Node的锚点从00设置成0.5并且把忽略锚点设置为false
