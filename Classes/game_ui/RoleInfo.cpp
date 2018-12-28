@@ -90,6 +90,7 @@ bool  RoleInfo::init()
 		}
 		else
 		{
+			//既然labTem是一个临时变量，我这里不能通过这个指针来消除label，这里改用tag来消除
 			Director::getInstance()->getRunningScene()->removeChildByTag(0xff19);
 			isHeadEquPropShow = false;
 			return true;
