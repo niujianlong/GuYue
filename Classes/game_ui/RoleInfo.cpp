@@ -2,7 +2,15 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "GameScene.h"
-
+RoleInfo::RoleInfo() :
+	m_pNode(NULL),//pointer of load from csb
+	m_pBg(NULL),//背景option的精灵
+	m_RolePic(NULL),//人物图片
+	m_HeadEquipment(NULL),//头部装备
+	m_HandEquipment(NULL),//hand equipment
+	m_BodyEquipment(NULL), //
+	m_FootEquipment(NULL)
+{}
 #if 0
 void RoleInfo::onEnterTransitionDidFinish()
 {
@@ -49,15 +57,52 @@ bool  RoleInfo::init()
 
 	//添加触控消息
 	static int cishu = 0;
+#if 1
 	auto listener = EventListenerTouchOneByOne::create();
-	listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("RoleInfo touch began %d", cishu++); return true; };
+	listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("m_pBg touch began %d", cishu++); return true; };
 	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 	listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, m_pBg);//这里必须是m_pBg，改成this照样会向下传递
+#endif
+	m_RolePic = dynamic_cast<Sprite*> (m_pNode->getChildByName("RoleInfo_2"));
+	//添加触控消息
+	auto Role_listener = EventListenerTouchOneByOne::create();
+	Role_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("m_RolePic touch began %d", cishu++); return true; };
+	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+	Role_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Role_listener, m_RolePic);
+
+	m_HeadEquipment = dynamic_cast<Sprite*> (m_pNode->getChildByName("head_3"));
+	//添加触控消息
+	auto Head_listener = EventListenerTouchOneByOne::create();
+	Head_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { 
+		log("m_HeadEquipment touch began %d", cishu++); 
+		if (1){//getHeadEquipment()->getBoundingBox().containsPoint(touch->getLocation())) {//判断触摸点是否在目标的范围内
+			Label* labTem = Label::create("Poor Head Equipment!", "fonts/FZKATJW.ttf", 10);
+			labTem->setPosition(touch->getLocation());
+			labTem->setColor(Color3B::YELLOW);
+			labTem->enableOutline(Color4B(124, 66, 24, 255), 2);
+			Director::getInstance()->getRunningScene()->addChild(labTem);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	
+	};
+	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+	Head_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Head_listener, m_HeadEquipment);
 
 	return true;
 }
 Node* RoleInfo::getNode()
 {
 	return m_pNode;
+}
+
+Sprite* RoleInfo::getHeadEquipment()
+{
+	return m_HeadEquipment;
 }
