@@ -34,7 +34,6 @@ void RoleInfo::onEnterTransitionDidFinish()
   //  button->setTouchPriority(0);
 }
 #endif
-static Label* labTem = Label::create("Poor Head Equipment!", "fonts/FZKATJW.ttf", 10);
 bool  RoleInfo::init()
 {
 	FileUtils::getInstance()->addSearchPath("ui/roleInfo");
@@ -79,19 +78,19 @@ bool  RoleInfo::init()
 	auto Head_listener = EventListenerTouchOneByOne::create();
 	Head_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { 
 		log("m_HeadEquipment touch began %d", cishu++); 
-		
+		Label* labTem = Label::create("Poor Head Equipment!", "fonts/FZKATJW.ttf", 10);
 		if (isHeadEquPropShow==false){//getHeadEquipment()->getBoundingBox().containsPoint(touch->getLocation())) {//判断触摸点是否在目标的范围内
 			labTem->setAnchorPoint(Vec2(0.0, 0.0));
 			labTem->setPosition(touch->getLocation());
 			labTem->setColor(Color3B::YELLOW);
 			labTem->enableOutline(Color4B(124, 66, 24, 255), 2);
-			Director::getInstance()->getRunningScene()->addChild(labTem);
+			Director::getInstance()->getRunningScene()->addChild(labTem,0,0xff19);
 			isHeadEquPropShow = true;
 			return true;
 		}
 		else
 		{
-			Director::getInstance()->getRunningScene()->removeChild(labTem);
+			Director::getInstance()->getRunningScene()->removeChildByTag(0xff19);
 			isHeadEquPropShow = false;
 			return true;
 		}
