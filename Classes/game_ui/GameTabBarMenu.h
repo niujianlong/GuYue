@@ -8,6 +8,7 @@
 #include "cocos-ext.h"
 #include "ui/cocosgui.h"
 #include "cocostudio/cocostudio.h"
+#include "RoleInfo.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace ui;

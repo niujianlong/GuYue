@@ -18,27 +18,6 @@ bool GameTabBarMenu::init()
         return false;
     }
     
-    /*
-     //    Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/head_UI/head_UI.json"));
-     //    if (widget)
-     //    {
-     //        //layer->addWidget(widget);
-     //        layer->addChild(widget);
-     //
-     //    }
-     ui::Widget * pNode=cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ui/head_UI/head_UI.json");
-     layer->addChild(pNode);
-     
-     
-     //坑啊 label 改为text了 诶
-     const char* nickName = PlayerController::sharePlayerController()->getPlayerName().c_str();
-     m_nickNameTTF = static_cast<ui::Text *>(ui::Helper::seekWidgetByName(pNode,"nickName"));
-     if (m_nickNameTTF)
-     {
-     m_nickNameTTF->setString(nickName);
-     }
-     */
-    
     Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/tabbarMenu/tabbarMenu.json"));
     if (widget)
     {
@@ -103,7 +82,6 @@ bool GameTabBarMenu::init()
     {
         setUpBtn->addTouchEventListener(this, toucheventselector(GameTabBarMenu::showSetUp));
     }
-    
     return true;
 }
 
