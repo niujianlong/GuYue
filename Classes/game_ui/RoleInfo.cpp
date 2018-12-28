@@ -80,7 +80,7 @@ bool  RoleInfo::init()
 	auto Head_listener = EventListenerTouchOneByOne::create();
 	Head_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool {
 		log("m_HeadEquipment touch began %d", cishu++);
-		auto pos = this->convertTouchToNodeSpace(touch);
+		auto pos = Director::getInstance()->getRunningScene()->convertTouchToNodeSpace(touch);
 		if (HeadEquaera.containsPoint(pos))
 		{
 			Label* labTem = Label::create("Poor Head Equipment!", "fonts/FZKATJW.ttf", 10);

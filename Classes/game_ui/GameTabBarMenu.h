@@ -25,7 +25,7 @@ public:
     void hideGameTabBarMenu();
     
     void showGameTabBarMenu();
-    
+	RoleInfo* m_RoleInfo;
 public:
     //Control::State::NORMAL
     //Control::EventType controlEvent
