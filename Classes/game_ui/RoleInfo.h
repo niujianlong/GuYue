@@ -23,7 +23,7 @@ private:
 public:
 	bool init();
 	Node* getNode();
-	Sprite* getHeadEquipment();
+	void roleInfoReleaseAll();
     CREATE_FUNC(RoleInfo);
     
     //void onEnterTransitionDidFinish();

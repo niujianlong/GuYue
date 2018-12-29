@@ -35,7 +35,6 @@ void RoleInfo::onEnterTransitionDidFinish()
 	//  button->setTouchPriority(0);
 }
 #endif
-Rect HeadEquaera;
 bool  RoleInfo::init()
 {
 	FileUtils::getInstance()->addSearchPath("ui/roleInfo");
@@ -48,31 +47,32 @@ bool  RoleInfo::init()
 	m_pNode->setAnchorPoint(Vec2(0.5, 0.5));
 	static int cishu = 0;
 	m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
+	m_pBg->retain();
 	
 	//添加触控消息
-	auto listener = EventListenerTouchOneByOne::create();
-	listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("m_pBg touch began %d", cishu++); return true; };
-	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+	auto Bg_listener = EventListenerTouchOneByOne::create();
+	Bg_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("m_pBg touch began %d", cishu++); return true; };
 	/*这个设置不能去掉，这个存在的目的就是把上层没有处理的触摸在这里进行处理，并且不向下传递给地图
 	导致角色的移动*/
-	listener->setSwallowTouches(true);//不向下传递触摸 add by njl
-	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, m_pBg);//这里必须是m_pBg，改成this照样会向下传递
+	Bg_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Bg_listener, m_pBg);//这里必须是m_pBg，改成this照样会向下传递
 
 	m_RolePic = dynamic_cast<Sprite*> (m_pNode->getChildByName("RoleInfo_2"));
+	m_RolePic->retain();
 	//添加触控消息
 	auto Role_listener = EventListenerTouchOneByOne::create();
 	Role_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("m_RolePic touch began %d", cishu++); return true; };
-	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
 	//Role_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Role_listener, m_RolePic);
 
 	m_HeadEquipment = dynamic_cast<Sprite*> (m_pNode->getChildByName("head_3"));
-	HeadEquaera = m_HeadEquipment->getBoundingBox();
+	m_HeadEquipment->retain();
 	//添加触控消息
 	static bool isHeadEquPropShow = false;
 	auto Head_listener = EventListenerTouchOneByOne::create();
 	Head_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool {
 		log("m_HeadEquipment touch began %d", cishu++);
+		Rect HeadEquaera = m_HeadEquipment->getBoundingBox();  //(0,0,0,0);
 		auto pos = m_pNode->convertTouchToNodeSpace(touch);
 		if (HeadEquaera.containsPoint(pos))
 		{
@@ -109,7 +109,36 @@ bool  RoleInfo::init()
 	//Head_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Head_listener, m_HeadEquipment);
 
+	m_HandEquipment = dynamic_cast<Sprite*> (m_pNode->getChildByName("hand_4"));
+	m_HandEquipment->retain();
+	auto Hand_listener = EventListenerTouchOneByOne::create();
+	Hand_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool {
+		log("m_HandEquipment touch began %d", cishu++);
+		return true;
+	};
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Hand_listener, m_HandEquipment);
 
+
+	m_BodyEquipment = dynamic_cast<Sprite*> (m_pNode->getChildByName("body_5"));
+	m_BodyEquipment->retain();
+	auto Body_listener = EventListenerTouchOneByOne::create();
+	Body_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool {
+		log("m_BodyEquipment touch began %d", cishu++);
+		return true;
+
+	};
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Body_listener, m_BodyEquipment);
+
+
+	m_FootEquipment = dynamic_cast<Sprite*> (m_pNode->getChildByName("foot_6"));
+	m_FootEquipment->retain();
+	auto Foot_listener = EventListenerTouchOneByOne::create();
+	Foot_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool {
+		log("m_FootEquipment touch began %d", cishu++);
+		return true;
+
+	};
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Foot_listener, m_FootEquipment);
 
 	//把关闭按钮放在最上层
 	ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
@@ -128,7 +157,15 @@ Node* RoleInfo::getNode()
 	return m_pNode;
 }
 
-Sprite* RoleInfo::getHeadEquipment()
+
+void RoleInfo::roleInfoReleaseAll()
 {
-	return m_HeadEquipment;
+	this->m_BodyEquipment->release();
+	this->m_FootEquipment->release();
+	this->m_HandEquipment->release();
+	this->m_HeadEquipment->release();
+	this->m_RolePic->release();
+	this->m_pBg->release();
+	this->m_pNode->release();
+	this->release();
 }

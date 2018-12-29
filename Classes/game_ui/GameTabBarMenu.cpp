@@ -87,10 +87,10 @@ bool GameTabBarMenu::init()
 
 void GameTabBarMenu::showRoleInfo(Ref* sender , Control::EventType controlEvent)
 {
-	RoleInfo* layer = RoleInfo::create();
-	layer->retain();
+	m_RoleInfo = RoleInfo::create();
+	m_RoleInfo->retain();//这个还不能去掉，去掉会出错
 	//Node* m_pNode = CSLoader::createNode("ui/roleInfo/RoleInfoPanel.csb");
-	GAME_UILAYER->addBigMenu(layer->getNode());
+	GAME_UILAYER->addBigMenu(m_RoleInfo->getNode());
 }
 
 void GameTabBarMenu::showBackPack(Ref* sender , Control::EventType controlEvent)

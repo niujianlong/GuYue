@@ -15,7 +15,7 @@ using namespace ui;
 using namespace cocostudio;
 class GameTabBarMenu: public Layer {
     
-    
+	CC_SYNTHESIZE_READONLY(RoleInfo*, m_RoleInfo, RoleInfo);
 public:
     
     CREATE_FUNC(GameTabBarMenu);
@@ -25,7 +25,6 @@ public:
     void hideGameTabBarMenu();
     
     void showGameTabBarMenu();
-	RoleInfo* m_RoleInfo;
 public:
     //Control::State::NORMAL
     //Control::EventType controlEvent
