@@ -78,6 +78,8 @@ private:
 private:
     
     Size m_winSize;
+
+	EventListenerTouchOneByOne* UIControler_listener;
     
     bool m_isShowTabBar;
     
