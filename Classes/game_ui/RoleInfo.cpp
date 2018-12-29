@@ -54,7 +54,7 @@ bool  RoleInfo::init()
 	Bg_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("m_pBg touch began %d", cishu++); return true; };
 	/*这个设置不能去掉，这个存在的目的就是把上层没有处理的触摸在这里进行处理，并且不向下传递给地图
 	导致角色的移动*/
-	Bg_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
+	//Bg_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Bg_listener, m_pBg);//这里必须是m_pBg，改成this照样会向下传递
 
 	m_RolePic = dynamic_cast<Sprite*> (m_pNode->getChildByName("RoleInfo_2"));
