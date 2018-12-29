@@ -2,6 +2,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "GameScene.h"
+#include "FontChina.h"
 RoleInfo::RoleInfo() :
 	m_pNode(NULL),//pointer of load from csb
 	m_pBg(NULL),//背景option的精灵
@@ -45,27 +46,18 @@ bool  RoleInfo::init()
 	这样的话这个Node就可以显示在屏幕中心的位置*/
 	m_pNode->ignoreAnchorPointForPosition(false);
 	m_pNode->setAnchorPoint(Vec2(0.5, 0.5));
-
-	m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
-	ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
-	button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
-	button->setPreferredSize(Size(57, 58));
-	button->setPosition(ccpSub(ccpAdd(m_pBg->getPosition(), m_pBg->getContentSize()), button->getContentSize() / 2));
-	m_pBg->addChild(button);
-
-	button->addTargetWithActionForControlEvents(GAME_UILAYER,
-		cccontrol_selector(GameInfoUIController::removeBigMenuAndButton),
-		Control::EventType::TOUCH_UP_INSIDE);
-
-	//添加触控消息
 	static int cishu = 0;
-#if 1
+	m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
+	
+	//添加触控消息
 	auto listener = EventListenerTouchOneByOne::create();
 	listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("m_pBg touch began %d", cishu++); return true; };
 	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
+	/*这个设置不能去掉，这个存在的目的就是把上层没有处理的触摸在这里进行处理，并且不向下传递给地图
+	导致角色的移动*/
 	listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, m_pBg);//这里必须是m_pBg，改成this照样会向下传递
-#endif
+
 	m_RolePic = dynamic_cast<Sprite*> (m_pNode->getChildByName("RoleInfo_2"));
 	//添加触控消息
 	auto Role_listener = EventListenerTouchOneByOne::create();
@@ -84,11 +76,11 @@ bool  RoleInfo::init()
 		auto pos = m_pNode->convertTouchToNodeSpace(touch);
 		if (HeadEquaera.containsPoint(pos))
 		{
-			Label* labTem = Label::create("Poor Head Equipment!", "fonts/FZKATJW.ttf", 10);
+			Label* labTem = Label::create(FontChina::G2U("这是一件普通的头盔"), "fonts/FZKATJW.ttf", 10);
 			if (isHeadEquPropShow == false) {//getHeadEquipment()->getBoundingBox().containsPoint(touch->getLocation())) {//判断触摸点是否在目标的范围内
 				labTem->setAnchorPoint(Vec2(0.0, 0.0));
 				labTem->setPosition(touch->getLocation());
-				labTem->setColor(Color3B::YELLOW);
+				labTem->setColor(Color3B::RED);
 				labTem->enableOutline(Color4B(124, 66, 24, 255), 2);
 				Director::getInstance()->getRunningScene()->addChild(labTem, 0, 0xff19);
 				isHeadEquPropShow = true;
@@ -104,6 +96,11 @@ bool  RoleInfo::init()
 		}
 		else
 		{
+			if (isHeadEquPropShow == true)
+			{
+				Director::getInstance()->getRunningScene()->removeChildByTag(0xff19);
+				isHeadEquPropShow = false;
+			}
 			return false;
 		}
 
@@ -112,6 +109,18 @@ bool  RoleInfo::init()
 	//Head_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Head_listener, m_HeadEquipment);
 
+
+
+	//把关闭按钮放在最上层
+	ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
+	button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
+	button->setPreferredSize(Size(57, 58));
+	button->setPosition(ccpSub(ccpAdd(m_pBg->getPosition(), m_pBg->getContentSize()), button->getContentSize() / 2));
+	m_pBg->addChild(button);
+
+	button->addTargetWithActionForControlEvents(GAME_UILAYER,
+		cccontrol_selector(GameInfoUIController::removeBigMenuAndButton),
+		Control::EventType::TOUCH_UP_INSIDE);
 	return true;
 }
 Node* RoleInfo::getNode()
