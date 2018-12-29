@@ -480,14 +480,14 @@ std::deque<MapPoint> GameScene::getPathNextWalkGrid(const MapPoint &begin, const
 
 bool GameScene::onTouchBegan(Touch *pTouch, Event *pEvent)
 {
-    printf("Player  onTouchBegan %f  %f",Player::sharePlayer()->getPosition().x,Player::sharePlayer()->getPosition().y);
+    cocos2d::log("Player  onTouchBegan %f  %f",Player::sharePlayer()->getPosition().x,Player::sharePlayer()->getPosition().y);
     
     Point tpoint = pTouch->getLocation();
    // Size t=_dPad->getContentSize();
     Rect rect(0, 0, 250, 200);
     if (rect.containsPoint(tpoint))
     {
-        printf("00000000\n");
+        cocos2d::log("00000000\n");
         return false;
     }
 //    printf("111111\n");
@@ -871,5 +871,5 @@ void GameScene::log(float dt)
 {
     MapPoint p = MapPoint(m_gMapPoint[Player::sharePlayer()]);
     MapPoint q = MapPoint(Player::sharePlayer()->getPosition());
-    printf("playerRunning x=%d, z=%d, x=%d, z=%d ", p.x, p.z, q.x ,q.z);
+    cocos2d::log("playerRunning x=%d, z=%d, x=%d, z=%d ", p.x, p.z, q.x ,q.z);
 }

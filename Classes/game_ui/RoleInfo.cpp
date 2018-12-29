@@ -76,7 +76,7 @@ bool  RoleInfo::init()
 		auto pos = m_pNode->convertTouchToNodeSpace(touch);
 		if (HeadEquaera.containsPoint(pos))
 		{
-			Label* labTem = Label::create(FontChina::G2U("这是一件普通的头盔"), "fonts/FZKATJW.ttf", 10);
+			Label* labTem = Label::create(FontChina::G2U("这是一件普通的头盔"), "fonts/FZKATJW.ttf", 20);
 			if (isHeadEquPropShow == false) {//getHeadEquipment()->getBoundingBox().containsPoint(touch->getLocation())) {//判断触摸点是否在目标的范围内
 				labTem->setAnchorPoint(Vec2(0.0, 0.0));
 				labTem->setPosition(touch->getLocation());
