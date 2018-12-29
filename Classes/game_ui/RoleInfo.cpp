@@ -39,6 +39,7 @@ bool  RoleInfo::init()
 {
 	FileUtils::getInstance()->addSearchPath("ui/roleInfo");
 	m_pNode = CSLoader::createNode("ui/roleInfo/RoleInfoPanel.csb");
+	m_pNode->retain();
 	/*//由于addBigMenu时候把这个Node放在了屏幕中心的位置
 	所以这里要强行把Node的锚点从00设置成0.5并且把忽略锚点设置为false
 	这样的话这个Node就可以显示在屏幕中心的位置*/
@@ -80,7 +81,7 @@ bool  RoleInfo::init()
 	auto Head_listener = EventListenerTouchOneByOne::create();
 	Head_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool {
 		log("m_HeadEquipment touch began %d", cishu++);
-		auto pos = Director::getInstance()->getRunningScene()->convertTouchToNodeSpace(touch);
+		auto pos = m_pNode->convertTouchToNodeSpace(touch);
 		if (HeadEquaera.containsPoint(pos))
 		{
 			Label* labTem = Label::create("Poor Head Equipment!", "fonts/FZKATJW.ttf", 10);
