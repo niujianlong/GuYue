@@ -74,6 +74,7 @@ void MapThumbnailMenu::onEnter()
     listener->onTouchMoved=CC_CALLBACK_2(MapThumbnailMenu::onTouchMoved, this);
     listener->onTouchEnded=CC_CALLBACK_2(MapThumbnailMenu::onTouchEnded, this);
     listener->onTouchCancelled=CC_CALLBACK_2(MapThumbnailMenu::onTouchCancelled, this);
+	listener->setSwallowTouches(true);
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     this->schedule(schedule_selector(MapThumbnailMenu::update), 0.04);
