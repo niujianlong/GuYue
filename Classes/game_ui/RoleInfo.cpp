@@ -71,7 +71,7 @@ bool  RoleInfo::init()
 	auto Role_listener = EventListenerTouchOneByOne::create();
 	Role_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("m_RolePic touch began %d", cishu++); return true; };
 	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
-	Role_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
+	//Role_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Role_listener, m_RolePic);
 
 	m_HeadEquipment = dynamic_cast<Sprite*> (m_pNode->getChildByName("head_3"));
@@ -109,7 +109,7 @@ bool  RoleInfo::init()
 
 	};
 	//listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
-	Head_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
+	//Head_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Head_listener, m_HeadEquipment);
 
 	return true;
