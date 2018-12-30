@@ -172,6 +172,8 @@ bool MapThumbnailMenu::onTouchBegan(Touch *pTouch, Event *pEvent)
     
     if (ccpDistance(point, centerPoint) <= lenght)
     {
+		//当MapThumbnailLayer显示的时候，遥杆不显示，这样角色不可以通过遥杆移动
+		GAME_SCENE->getDPad()->stopRocker();
         return true;
     }
     
@@ -237,6 +239,8 @@ bool MapThumbnailLayer::init()
 
 void MapThumbnailLayer::removeSelf(Ref* obj, Control::EventType)
 {
+	//当MapThumbnailLayer不显示的时候，遥杆显示，这样角色可以通过遥杆移动
+	GAME_SCENE->getDPad()->startRocker(true);
     this->removeFromParentAndCleanup(true);
 }
 
@@ -287,7 +291,7 @@ void MapThumbnailScrollView::initWithMap()
     this->addChild(sprite);
     this->setContentSize(sprite->getContentSize());
     
-    m_pEndPoint = createIndicator(8);
+	m_pEndPoint = Sprite::create("ui/indicator.png");//createIndicator(8);
     m_pEndPoint->setColor(Color3B::YELLOW);//add by njl
     //m_pContainer->addChild(m_pEndPoint);
     _container->addChild(m_pEndPoint);
@@ -316,6 +320,7 @@ void MapThumbnailScrollView::initWithMap()
     listener->onTouchMoved=CC_CALLBACK_2(MapThumbnailScrollView::onTouchMoved, this);
     listener->onTouchEnded=CC_CALLBACK_2(MapThumbnailScrollView::onTouchEnded, this);
     //listener->onTouchCancelled=CC_CALLBACK_2(MapThumbnailScrollView::onTouchCancelled, this);
+	//MapThumbnailScrollView的触摸不能向下传递
 	listener->setSwallowTouches(true);
     Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
