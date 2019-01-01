@@ -168,7 +168,7 @@ Scene * RoleCreateLayer::createScene()
 void RoleCreateLayer::joinGame()
 {
    
-    GameLoading::runGameLoading(200, 4);//地图200  传送编号1
+    GameLoading::runGameLoading(300, 4);//地图200  传送编号1
     this->removeFromParent();
     
 }
