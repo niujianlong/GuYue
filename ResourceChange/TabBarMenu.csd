@@ -1,5 +1,5 @@
 <GameFile>
-  <PropertyGroup Name="Layer1" Type="Layer" ID="49e74fba-2246-4421-9b06-5b777a9a5401" Version="3.10.0.0" />
+  <PropertyGroup Name="TabBarMenu" Type="Layer" ID="49e74fba-2246-4421-9b06-5b777a9a5401" Version="3.10.0.0" />
   <Content ctype="GameProjectContent">
     <Content>
       <Animation Duration="0" Speed="1.0000" />
@@ -17,7 +17,7 @@
             <FileData Type="Normal" Path="options.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Button_1" ActionTag="181175813" Tag="18" IconVisible="False" LeftMargin="154.5017" RightMargin="676.4983" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" ButtonText="角色" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="Button_1" ActionTag="181175813" Tag="18" IconVisible="False" LeftMargin="154.5017" RightMargin="676.4983" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="129.0000" Y="43.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="219.0017" Y="534.4266" />
@@ -32,7 +32,7 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Button_1_0" ActionTag="1388926736" Tag="19" IconVisible="False" LeftMargin="283.5031" RightMargin="547.4969" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" ButtonText="背包" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="Button_1_0" ActionTag="1388926736" Tag="19" IconVisible="False" LeftMargin="283.5031" RightMargin="547.4969" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="129.0000" Y="43.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="348.0031" Y="534.4266" />
@@ -47,7 +47,7 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Button_1_0_0" ActionTag="-2146681773" Tag="20" IconVisible="False" LeftMargin="412.5061" RightMargin="418.4939" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" ButtonText="技能" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="Button_1_0_0" ActionTag="-2146681773" Tag="20" IconVisible="False" LeftMargin="412.5061" RightMargin="418.4939" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="129.0000" Y="43.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="477.0061" Y="534.4266" />
@@ -62,13 +62,13 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Button_1_0_1" ActionTag="-44434870" Tag="21" IconVisible="False" LeftMargin="541.5084" RightMargin="289.4916" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" ButtonText="强化" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="Button_1_0_1" ActionTag="-44434870" Tag="21" IconVisible="False" LeftMargin="541.5086" RightMargin="289.4914" TopMargin="82.9897" BottomMargin="514.0103" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="129.0000" Y="43.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="606.0084" Y="534.4266" />
+            <Position X="606.0086" Y="535.5103" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.6313" Y="0.8350" />
+            <PrePosition X="0.6313" Y="0.8367" />
             <PreSize X="0.1344" Y="0.0672" />
             <TextColor A="255" R="65" G="65" B="70" />
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
@@ -77,7 +77,7 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Button_1_0_2" ActionTag="1269496906" Tag="22" IconVisible="False" LeftMargin="670.5084" RightMargin="160.4916" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" ButtonText="设置" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+          <AbstractNodeData Name="Button_1_0_2" ActionTag="1269496906" Tag="22" IconVisible="False" LeftMargin="670.5084" RightMargin="160.4916" TopMargin="84.0734" BottomMargin="512.9266" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="99" Scale9Height="21" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
             <Size X="129.0000" Y="43.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="735.0084" Y="534.4266" />
@@ -89,6 +89,61 @@
             <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
             <PressedFileData Type="Normal" Path="anxia.png" Plist="" />
             <NormalFileData Type="Normal" Path="tabpic.png" Plist="" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="Text_1" ActionTag="-945569719" Tag="24" IconVisible="False" LeftMargin="199.0000" RightMargin="721.0000" TopMargin="95.5700" BottomMargin="524.4300" FontSize="20" LabelText="角色" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="40.0000" Y="20.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="219.0000" Y="534.4300" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.2281" Y="0.8350" />
+            <PreSize X="0.0417" Y="0.0313" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="Text_1_0" ActionTag="1133506997" Tag="25" IconVisible="False" LeftMargin="328.0000" RightMargin="592.0000" TopMargin="95.5700" BottomMargin="524.4300" FontSize="20" LabelText="背包" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="40.0000" Y="20.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="348.0000" Y="534.4300" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.3625" Y="0.8350" />
+            <PreSize X="0.0417" Y="0.0313" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="Text_1_1" ActionTag="-2105188420" Tag="26" IconVisible="False" LeftMargin="457.0100" RightMargin="462.9900" TopMargin="95.5728" BottomMargin="524.4272" FontSize="20" LabelText="技能" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="40.0000" Y="20.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="477.0100" Y="534.4272" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.4969" Y="0.8350" />
+            <PreSize X="0.0417" Y="0.0313" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="Text_1_2" ActionTag="195892587" Tag="27" IconVisible="False" LeftMargin="586.0100" RightMargin="333.9900" TopMargin="95.5700" BottomMargin="524.4300" FontSize="20" LabelText="强化" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="40.0000" Y="20.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="606.0100" Y="534.4300" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.6313" Y="0.8350" />
+            <PreSize X="0.0417" Y="0.0313" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="Text_1_3" ActionTag="1795048350" Tag="28" IconVisible="False" LeftMargin="715.0100" RightMargin="204.9900" TopMargin="95.5700" BottomMargin="524.4300" FontSize="20" LabelText="设置" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="TextObjectData">
+            <Size X="40.0000" Y="20.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="735.0100" Y="534.4300" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.7656" Y="0.8350" />
+            <PreSize X="0.0417" Y="0.0313" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
