@@ -17,12 +17,13 @@ bool GameTabBarMenu::init()
     {
         return false;
     }
-    
+	FileUtils::getInstance()->addSearchPath("ui/tabbarMenu");
+	auto p_Layer = CSLoader::createNode("ui/tabbarMenu/TabBarMenu.csb");
     Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/tabbarMenu/tabbarMenu.json"));
-    if (widget)
+    if (p_Layer)
     {
-        widget->setTouchEnabled(true);
-        this->addChild(widget);
+        //widget->setTouchEnabled(true);
+        this->addChild(p_Layer);
     }
 
     Button* roleInfoBtn = dynamic_cast<Button*>(ui::Helper::seekWidgetByName(widget,"TextButton_role"));
@@ -142,7 +143,7 @@ void GameTabBarMenu::hideGameTabBarMenu()
 {
     this->stopAllActions();
     Size winSize = Director::getInstance()->getWinSize();
-    MoveTo* moveTo = MoveTo::create(0.3f, Point(winSize.width-960, -100));
+    MoveTo* moveTo = MoveTo::create(0.3f, Point(0, -winSize.height));
     EaseSineOut* easeBack = EaseSineOut::create(moveTo);
     this->runAction(easeBack);
 }
