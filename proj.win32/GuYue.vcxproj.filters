@@ -201,6 +201,9 @@
     <ClCompile Include="..\Classes\game_ui\HeadEquipmentLabel.cpp">
       <Filter>src\game_ui</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\game_ui\TabUiControl.cpp">
+      <Filter>src\game_ui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -378,6 +381,9 @@
       <Filter>src\game_ui</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\game_ui\HeadEquipmentLabel.h">
+      <Filter>src\game_ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\game_ui\TabUiControl.h">
       <Filter>src\game_ui</Filter>
     </ClInclude>
   </ItemGroup>
