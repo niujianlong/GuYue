@@ -147,6 +147,21 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
+          <AbstractNodeData Name="Button_Close" ActionTag="1754158700" Tag="29" IconVisible="False" LeftMargin="855.0561" RightMargin="44.9439" TopMargin="47.3376" BottomMargin="532.6624" TouchEnable="True" FontSize="14" Scale9Enable="True" LeftEage="15" RightEage="15" TopEage="11" BottomEage="11" Scale9OriginX="15" Scale9OriginY="11" Scale9Width="30" Scale9Height="38" ShadowOffsetX="2.0000" ShadowOffsetY="-2.0000" ctype="ButtonObjectData">
+            <Size X="60.0000" Y="60.0000" />
+            <AnchorPoint ScaleX="0.1928" ScaleY="0.2832" />
+            <Position X="866.6241" Y="549.6544" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.9027" Y="0.8588" />
+            <PreSize X="0.0625" Y="0.0938" />
+            <TextColor A="255" R="65" G="65" B="70" />
+            <DisabledFileData Type="Default" Path="Default/Button_Disable.png" Plist="" />
+            <PressedFileData Type="Normal" Path="closed_selected.png" Plist="" />
+            <NormalFileData Type="Normal" Path="closed_normal.png" Plist="" />
+            <OutlineColor A="255" R="255" G="0" B="0" />
+            <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
           <AbstractNodeData Name="Node_0" ActionTag="999497164" Tag="21" IconVisible="True" RightMargin="960.0000" TopMargin="640.0000" ctype="SingleNodeObjectData">
             <Size X="0.0000" Y="0.0000" />
             <AnchorPoint />
