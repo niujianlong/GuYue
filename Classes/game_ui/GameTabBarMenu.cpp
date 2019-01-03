@@ -27,7 +27,7 @@ bool GameTabBarMenu::init()
 	button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
 	button->setPreferredSize(Size(57, 58));
 	auto Vec2Test = ccpSub(m_pBg->getContentSize() / 2, button->getContentSize() / 2);
-	button->setPosition(Vec2Test);
+	button->setPosition(Vec2Test*2);
 	m_pBg->addChild(button,0xffff);
 	//Director::getInstance()->getRunningScene()->addChild(button,0xffff);
 
