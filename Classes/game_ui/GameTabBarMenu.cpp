@@ -20,13 +20,27 @@ bool GameTabBarMenu::init()
     }
 	FileUtils::getInstance()->addSearchPath("ui/tabbarMenu");
 	auto p_Layer = CSLoader::createNode("ui/tabbarMenu/TabBarMenu.csb");
+	auto m_pBg = dynamic_cast<Sprite*> (p_Layer->getChildByName("options_1"));
+
+	//把关闭按钮放在最上层
+	ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
+	button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
+	button->setPreferredSize(Size(57, 58));
+	auto Vec2Test = ccpSub(m_pBg->getContentSize() / 2, button->getContentSize() / 2);
+	button->setPosition(Vec2Test);
+	m_pBg->addChild(button,0xffff);
+	//Director::getInstance()->getRunningScene()->addChild(button,0xffff);
+
+	button->addTargetWithActionForControlEvents(GAME_UILAYER,
+		cccontrol_selector(GameInfoUIController::removeBigMenuAndButton),
+		Control::EventType::TOUCH_UP_INSIDE);
     //Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/tabbarMenu/tabbarMenu.json"));
 	auto pNode0 = dynamic_cast<Node*> (p_Layer->getChildByName("Node_0"));
 	m_RoleInfo = RoleInfo::create();
 	m_RoleInfo->retain();//这个还不能去掉，去掉会出错
 	m_RoleInfo->setPosition(Vec2(0, 0));//Point(WINSIZE.width / 2, (WINSIZE.height + 80) / 2));
 	//m_RoleInfo->setZOrder(0xffff);
-	pNode0->addChild(m_RoleInfo->getNode(),0xffff);
+	pNode0->addChild(m_RoleInfo->getNode());
     if (p_Layer)
     {
         //widget->setTouchEnabled(true);
@@ -96,6 +110,7 @@ bool GameTabBarMenu::init()
         setUpBtn->addTouchEventListener(this, toucheventselector(GameTabBarMenu::showSetUp));
     }
 #endif
+	
     return true;
 }
 
