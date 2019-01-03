@@ -46,8 +46,8 @@ bool  RoleInfo::init()
 	//m_pNode->ignoreAnchorPointForPosition(false);
 	//m_pNode->setAnchorPoint(Vec2(0.5, 0.5));
 	static int cishu = 0;
-	m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
-	m_pBg->retain();
+	//m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
+	//m_pBg->retain();
 	
 	//Ìí¼Ó´¥¿ØÏûÏ¢
 	auto Bg_listener = EventListenerTouchOneByOne::create();
