@@ -9,6 +9,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
+
 #define WINSIZE Director::getInstance()->getWinSize()
 
 bool GameTabBarMenu::init()
@@ -19,13 +20,17 @@ bool GameTabBarMenu::init()
     }
 	FileUtils::getInstance()->addSearchPath("ui/tabbarMenu");
 	auto p_Layer = CSLoader::createNode("ui/tabbarMenu/TabBarMenu.csb");
-    Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/tabbarMenu/tabbarMenu.json"));
+    //Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/tabbarMenu/tabbarMenu.json"));
     if (p_Layer)
     {
         //widget->setTouchEnabled(true);
         this->addChild(p_Layer);
     }
+	m_TabUiControl = new TabUiControl();
+	m_TabUiControl->InitTab(p_Layer, 5, true, "Button_", "Text_", "Node_");
+	m_TabUiControl->ActiveTab(0);
 
+#if 0
     Button* roleInfoBtn = dynamic_cast<Button*>(ui::Helper::seekWidgetByName(widget,"TextButton_role"));
     if (roleInfoBtn)
     {
@@ -83,6 +88,7 @@ bool GameTabBarMenu::init()
     {
         setUpBtn->addTouchEventListener(this, toucheventselector(GameTabBarMenu::showSetUp));
     }
+#endif
     return true;
 }
 

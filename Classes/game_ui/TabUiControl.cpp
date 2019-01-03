@@ -67,6 +67,7 @@ bool TabUiControl::InitTab(Node *pRootNode, int tabCount, bool bHaveContenNode, 
             {
                 sprintf(tc, "%s%d", pContentName, i);
                 //pNode = StudioUiBase::FindUiChildNode(pRootNode, tc);
+				pNode = dynamic_cast<Node*> (pRootNode->getChildByName(tc));
                 CC_BREAK_IF(!pNode);
                 _pTabBtnData[i]._pContentNode = pNode;
             }
@@ -75,10 +76,13 @@ bool TabUiControl::InitTab(Node *pRootNode, int tabCount, bool bHaveContenNode, 
             //tabBtn
             sprintf(tc, "%s%d", pTabBtnName, i);
             //pNode = StudioUiBase::FindUiChildNode(pRootNode, tc);
+			pNode = dynamic_cast<Button*> (pRootNode->getChildByName(tc));
             pTempBtn = dynamic_cast<ui::Button*>(pNode);
             CC_BREAK_IF(!pTempBtn);
             //btnTxt
+			sprintf(tc, "%s%d", pTabTxtName, i);
             //pNode = StudioUiBase::FindUiChildNode(pTempBtn, pTabTxtName);
+			pNode = dynamic_cast<Text*> (pRootNode->getChildByName(tc));
             pTempTxt = dynamic_cast<Text*>(pNode);
             CC_BREAK_IF(!pTempTxt);
             //tab 值
@@ -116,7 +120,11 @@ void TabUiControl::ActiveTab(int index)
 
         //选中设置
         _pTabBtnData[index]._pTabBtn->setLocalZOrder(_tabMaxZorder);
+		//_pTabBtnData[index]._pTabBtn->loadTextureNormal("ui/tabbarMenu/anxia.png");
+
         _pTabBtnData[index]._pTabBtn->setBright(true);
+
+		_pTabBtnData[index]._pBtnTxt->setLocalZOrder(_tabMaxZorder + 1);
         _pTabBtnData[index]._pBtnTxt->setTextColor(_activeTxtColor);
 
         //内容可见性
@@ -127,9 +135,17 @@ void TabUiControl::ActiveTab(int index)
         for (int i = index - 1; i >= 0; i--)
         {
             //未选中设置
+#if 0
             zorder--;
             _pTabBtnData[i]._pTabBtn->setLocalZOrder(zorder);
             _pTabBtnData[i]._pTabBtn->setBright(false);
+			//_pTabBtnData[i]._pTabBtn->setLocalZOrder(zorder);
+
+			//_pTabBtnData[i]._pTabBtn->loadTextureNormal("ui/tabbarMenu/notSelected.png");
+#endif
+			//这个setBright(false)精髓就是把按钮的状态设置成disable状态，让他显示禁用状态的图片
+			//这样就实现了Tab页的效果，你可以跟到代码里看到这个false确实在设置button的 onPressStateChangedToDisabled();
+			_pTabBtnData[i]._pTabBtn->setBright(false);
             _pTabBtnData[i]._pBtnTxt->setTextColor(_unActiveTxtColor);
 
             //内容可见性
@@ -141,10 +157,16 @@ void TabUiControl::ActiveTab(int index)
         for (int i = index + 1; i < _tabCount; i++)
         {
             //未选中设置
-            zorder--;
-            _pTabBtnData[i]._pTabBtn->setLocalZOrder(zorder);
-            _pTabBtnData[i]._pTabBtn->setBright(false);
-            _pTabBtnData[i]._pBtnTxt->setTextColor(_unActiveTxtColor);
+#if 0
+			zorder--;
+			_pTabBtnData[i]._pTabBtn->setLocalZOrder(zorder);
+			//_pTabBtnData[i]._pTabBtn->setBright(false);
+			//_pTabBtnData[i]._pTabBtn->setLocalZOrder(zorder);
+
+			//_pTabBtnData[i]._pTabBtn->loadTextureNormal("ui/tabbarMenu/notSelected.png");  
+#endif // 0
+			_pTabBtnData[i]._pTabBtn->setBright(false);
+			_pTabBtnData[i]._pBtnTxt->setTextColor(_unActiveTxtColor);
 
             //内容可见性
             if (_bHaveContenNode)

@@ -9,6 +9,7 @@
 #include "ui/cocosgui.h"
 #include "cocostudio/cocostudio.h"
 #include "RoleInfo.h"
+#include "TabUiControl.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace ui;
@@ -45,6 +46,8 @@ public:
     void showCanon(Ref* sender = NULL,Control::EventType controlEvent= Control::EventType::TOUCH_UP_INSIDE);
     
     void showSetUp(Ref* sender = NULL, Control::EventType controlEvent= Control::EventType::TOUCH_UP_INSIDE);
+private:
+	TabUiControl* m_TabUiControl;
 
 };
 
