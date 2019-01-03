@@ -26,7 +26,7 @@ bool GameTabBarMenu::init()
 	m_RoleInfo->retain();//这个还不能去掉，去掉会出错
 	m_RoleInfo->setPosition(Vec2(0, 0));//Point(WINSIZE.width / 2, (WINSIZE.height + 80) / 2));
 	//m_RoleInfo->setZOrder(0xffff);
-	//pNode0->addChild(m_RoleInfo,0xffff);
+	pNode0->addChild(m_RoleInfo->getNode(),0xffff);
     if (p_Layer)
     {
         //widget->setTouchEnabled(true);
@@ -36,7 +36,7 @@ bool GameTabBarMenu::init()
 	m_TabUiControl = new TabUiControl();
 	m_TabUiControl->InitTab(p_Layer, 5, true, "Button_", "Text_", "Node_");
 	m_TabUiControl->ActiveTab(0);
-	Director::getInstance()->getRunningScene()->addChild(m_RoleInfo->getNode(),0xffff);
+	//Director::getInstance()->getRunningScene()->addChild(m_RoleInfo->getNode(),0xffff);
 #if 0
     Button* roleInfoBtn = dynamic_cast<Button*>(ui::Helper::seekWidgetByName(widget,"TextButton_role"));
     if (roleInfoBtn)

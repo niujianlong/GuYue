@@ -162,13 +162,13 @@
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Node_0" ActionTag="999497164" Tag="21" IconVisible="True" LeftMargin="480.0000" RightMargin="480.0000" TopMargin="320.0000" BottomMargin="320.0000" ctype="SingleNodeObjectData">
+          <AbstractNodeData Name="Node_0" ActionTag="999497164" Tag="21" IconVisible="True" RightMargin="960.0000" TopMargin="640.0000" ctype="SingleNodeObjectData">
             <Size X="0.0000" Y="0.0000" />
             <AnchorPoint />
-            <Position X="480.0000" Y="320.0000" />
+            <Position />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5000" Y="0.5000" />
+            <PrePosition />
             <PreSize X="0.0000" Y="0.0000" />
           </AbstractNodeData>
           <AbstractNodeData Name="Node_1" ActionTag="1818817102" Tag="22" IconVisible="True" LeftMargin="480.0000" RightMargin="480.0000" TopMargin="320.0000" BottomMargin="320.0000" ctype="SingleNodeObjectData">

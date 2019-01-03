@@ -46,8 +46,9 @@ bool  RoleInfo::init()
 	//m_pNode->ignoreAnchorPointForPosition(false);
 	//m_pNode->setAnchorPoint(Vec2(0.5, 0.5));
 	static int cishu = 0;
-	//m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
-	//m_pBg->retain();
+#if 0
+	m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
+	m_pBg->retain();
 	
 	//添加触控消息
 	auto Bg_listener = EventListenerTouchOneByOne::create();
@@ -56,7 +57,7 @@ bool  RoleInfo::init()
 	导致角色的移动*/
 	//Bg_listener->setSwallowTouches(true);//不向下传递触摸 add by njl
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Bg_listener, m_pBg);//这里必须是m_pBg，改成this照样会向下传递
-
+#endif
 	m_RolePic = dynamic_cast<Sprite*> (m_pNode->getChildByName("RoleInfo_2"));
 	m_RolePic->retain();
 	//添加触控消息
@@ -140,6 +141,7 @@ bool  RoleInfo::init()
 	};
 	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Foot_listener, m_FootEquipment);
 
+#if 0
 	//把关闭按钮放在最上层
 	ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
 	button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
@@ -150,6 +152,7 @@ bool  RoleInfo::init()
 	button->addTargetWithActionForControlEvents(GAME_UILAYER,
 		cccontrol_selector(GameInfoUIController::removeBigMenuAndButton),
 		Control::EventType::TOUCH_UP_INSIDE);
+#endif
 	return true;
 }
 Node* RoleInfo::getNode()

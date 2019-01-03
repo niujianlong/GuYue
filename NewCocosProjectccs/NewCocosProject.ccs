@@ -1,0 +1,22 @@
+<Solution>
+  <PropertyGroup Name="NewCocosProject" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Image Name="anxia.png" />
+        <Image Name="body.png" />
+        <Image Name="closed_normal.png" />
+        <Image Name="closed_selected.png" />
+        <Image Name="foot.png" />
+        <Image Name="hand.png" />
+        <Image Name="head.png" />
+        <Image Name="options.png" />
+        <Image Name="queding01.png" />
+        <Image Name="RoleInfo.jpg" />
+        <Project Name="RoleInfoPanel.csd" Type="Node" />
+        <Project Name="TabBarMenu.csd" Type="Layer" />
+        <Image Name="tabpic.png" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

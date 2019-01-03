@@ -3,7 +3,6 @@ proj.android/*
 proj.ios_mac/
 .cocos-project.json
 config.json
-NewCocosProject.ccs
 NewCocosProject.cfg
 NewCocosProject.udf
 Resources/
