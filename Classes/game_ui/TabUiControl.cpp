@@ -130,6 +130,24 @@ void TabUiControl::ActiveTab(int index)
         //内容可见性
         if (_bHaveContenNode)
             _pTabBtnData[index]._pContentNode->setVisible(true);
+		switch (index) 
+		{
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		default:
+			break;
+		
+		}
+
+
 
         //左边的tab
         for (int i = index - 1; i >= 0; i--)

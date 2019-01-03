@@ -43,8 +43,8 @@ bool  RoleInfo::init()
 	/*//由于addBigMenu时候把这个Node放在了屏幕中心的位置
 	所以这里要强行把Node的锚点从00设置成0.5并且把忽略锚点设置为false
 	这样的话这个Node就可以显示在屏幕中心的位置*/
-	m_pNode->ignoreAnchorPointForPosition(false);
-	m_pNode->setAnchorPoint(Vec2(0.5, 0.5));
+	//m_pNode->ignoreAnchorPointForPosition(false);
+	//m_pNode->setAnchorPoint(Vec2(0.5, 0.5));
 	static int cishu = 0;
 	m_pBg = dynamic_cast<Sprite*> (m_pNode->getChildByName("options_1"));
 	m_pBg->retain();
