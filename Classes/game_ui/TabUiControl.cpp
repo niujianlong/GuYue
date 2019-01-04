@@ -167,8 +167,11 @@ void TabUiControl::ActiveTab(int index)
             _pTabBtnData[i]._pBtnTxt->setTextColor(_unActiveTxtColor);
 
             //内容可见性
-            if (_bHaveContenNode)
-                _pTabBtnData[i]._pContentNode->setVisible(false);
+			if (_bHaveContenNode)
+			{
+				_pTabBtnData[i]._pContentNode->setVisible(false);
+			}
+                
         }
 
         //右边的tab
