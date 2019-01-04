@@ -44,7 +44,7 @@ bool GameTabBarMenu::init()
     //Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/tabbarMenu/tabbarMenu.json"));
 	auto pNode0 = dynamic_cast<Node*> (p_Layer->getChildByName("Node_0"));
 	m_RoleInfo = RoleInfo::create();
-	m_RoleInfo->retain();//这个还不能去掉，去掉会出错
+	//m_RoleInfo->retain();//这个还不能去掉，去掉会出错
 	m_RoleInfo->getNode()->setPosition(Vec2(0, 0));//Point(WINSIZE.width / 2, (WINSIZE.height + 80) / 2));
 	//m_RoleInfo->setZOrder(0xffff);
 	pNode0->addChild(m_RoleInfo->getNode());
