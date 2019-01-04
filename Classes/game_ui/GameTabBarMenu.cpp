@@ -20,25 +20,32 @@ bool GameTabBarMenu::init()
     }
 	FileUtils::getInstance()->addSearchPath("ui/tabbarMenu");
 	auto p_Layer = CSLoader::createNode("ui/tabbarMenu/TabBarMenu.csb");
+#if 0  //无法解决代码创建的ControlButton的Scale问题遂放弃 改成静态获取
 	auto m_pBg = dynamic_cast<Sprite*> (p_Layer->getChildByName("options_1"));
-
 	//把关闭按钮放在最上层
 	ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
 	button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
-	button->setPreferredSize(Size(57, 58));
-	auto Vec2Test = ccpSub(m_pBg->getContentSize() / 2, button->getContentSize() / 2);
-	button->setPosition(Vec2Test*2);
-	m_pBg->addChild(button,0xffff);
+	button->setPreferredSize(Size(60, 60));
+	button->setScaleX(0.8569);
+	button->setScaleY(0.75625);
+	auto Vec2Test = ccpSub(m_pBg->getContentSize(), button->getContentSize() / 2);
+	button->setPosition(Vec2Test);
+	m_pBg->addChild(button);
+	auto Vec2Anc = m_pBg->getAnchorPoint();
+	auto Vec2AncAbs = m_pBg->getAnchorPointInPoints();
 	//Director::getInstance()->getRunningScene()->addChild(button,0xffff);
 
 	button->addTargetWithActionForControlEvents(GAME_UILAYER,
 		cccontrol_selector(GameInfoUIController::removeBigMenuAndButton),
 		Control::EventType::TOUCH_UP_INSIDE);
+#endif
+	auto button_Close = dynamic_cast<Button*> (p_Layer->getChildByName("Button_Close"));
+	button_Close->addTouchEventListener(this, toucheventselector(GameTabBarMenu::btnCloseCallBack));
     //Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/tabbarMenu/tabbarMenu.json"));
 	auto pNode0 = dynamic_cast<Node*> (p_Layer->getChildByName("Node_0"));
 	m_RoleInfo = RoleInfo::create();
 	m_RoleInfo->retain();//这个还不能去掉，去掉会出错
-	m_RoleInfo->setPosition(Vec2(0, 0));//Point(WINSIZE.width / 2, (WINSIZE.height + 80) / 2));
+	m_RoleInfo->getNode()->setPosition(Vec2(0, 0));//Point(WINSIZE.width / 2, (WINSIZE.height + 80) / 2));
 	//m_RoleInfo->setZOrder(0xffff);
 	pNode0->addChild(m_RoleInfo->getNode());
     if (p_Layer)
@@ -183,4 +190,8 @@ void GameTabBarMenu::showGameTabBarMenu()
     MoveTo* moveTo = MoveTo::create(0.3f, Point(winSize.width-960, 0));
     EaseSineOut* easeBack = EaseSineOut::create(moveTo);
     this->runAction(easeBack);
+}
+void GameTabBarMenu::btnCloseCallBack(Ref* sender, Control::EventType controlEvent)
+{
+	hideGameTabBarMenu();
 }

@@ -1,0 +1,24 @@
+<Solution>
+  <PropertyGroup Name="NewCocosProject" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Image Name="1.jpg" />
+        <Image Name="body.png" />
+        <Image Name="closed_normal.png" />
+        <Image Name="closed_selected.png" />
+        <Project Name="FirstScene.csd" Type="Scene" />
+        <Image Name="foot.png" />
+        <Image Name="hand.png" />
+        <Image Name="head.png" />
+        <Image Name="HelloWorld.png" />
+        <Project Name="Layer.csd" Type="Layer" />
+        <Project Name="MainScene.csd" Type="Scene" />
+        <Image Name="options.png" />
+        <Image Name="RoleInfo.jpg" />
+        <Project Name="RoleInfoPanel.csd" Type="Node" />
+        <TTF Name="YaHei.ttf" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>

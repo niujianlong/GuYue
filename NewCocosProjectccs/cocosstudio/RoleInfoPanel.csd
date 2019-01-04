@@ -17,10 +17,10 @@
             <FileData Type="Normal" Path="RoleInfo.jpg" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="head_3" ActionTag="728329503" Tag="10" IconVisible="False" LeftMargin="310.9995" RightMargin="-388.9995" TopMargin="-435.9999" BottomMargin="363.9999" ctype="SpriteObjectData">
+          <AbstractNodeData Name="head_3" ActionTag="728329503" Tag="10" IconVisible="False" LeftMargin="311.0000" RightMargin="-389.0000" TopMargin="-436.0016" BottomMargin="364.0016" ctype="SpriteObjectData">
             <Size X="78.0000" Y="72.0000" />
-            <AnchorPoint ScaleX="0.3175" ScaleY="0.6555" />
-            <Position X="335.7646" Y="411.1976" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="350.0000" Y="400.0016" />
             <Scale ScaleX="1.0000" ScaleY="1.0000" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition />
