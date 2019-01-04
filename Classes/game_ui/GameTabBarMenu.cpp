@@ -191,7 +191,10 @@ void GameTabBarMenu::showGameTabBarMenu()
     EaseSineOut* easeBack = EaseSineOut::create(moveTo);
     this->runAction(easeBack);
 }
-void GameTabBarMenu::btnCloseCallBack(Ref* sender, Control::EventType controlEvent)
+void GameTabBarMenu::btnCloseCallBack(Ref* sender, ui::TouchEventType touchEvent )
 {
-	hideGameTabBarMenu();
+	if (ui::TouchEventType::TOUCH_EVENT_BEGAN == touchEvent)
+	{
+		GAME_UILAYER->hideTabBarMenuCall();
+	}
 }

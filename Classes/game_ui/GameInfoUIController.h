@@ -62,6 +62,7 @@ public:
     void removeSmallMenuAndButton(Ref* node, Control::EventType controlEvent);
     
     void removeBigMenuAndButton(Ref* node, Control::EventType controlEvent);
+	void hideTabBarMenuCall(void);
     
 private:
     

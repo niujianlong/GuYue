@@ -46,7 +46,7 @@ public:
     void showCanon(Ref* sender = NULL,Control::EventType controlEvent= Control::EventType::TOUCH_UP_INSIDE);
     
     void showSetUp(Ref* sender = NULL, Control::EventType controlEvent= Control::EventType::TOUCH_UP_INSIDE);
-	void btnCloseCallBack(Ref* sender = NULL, Control::EventType controlEvent = Control::EventType::TOUCH_UP_INSIDE);
+	void btnCloseCallBack(Ref* sender = NULL, ui::TouchEventType touchEvent = ui::TouchEventType::TOUCH_EVENT_BEGAN);
 
 private:
 	TabUiControl* m_TabUiControl;
