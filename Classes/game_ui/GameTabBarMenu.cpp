@@ -20,6 +20,10 @@ bool GameTabBarMenu::init()
     }
 	FileUtils::getInstance()->addSearchPath("ui/tabbarMenu");
 	auto p_Layer = CSLoader::createNode("ui/tabbarMenu/TabBarMenu.csb");
+	Layer_listener = EventListenerTouchOneByOne::create();
+	Layer_listener->onTouchBegan = [&](Touch *touch, Event *unused_event)->bool { log("p_Layer of TabBarMenu touch began"); return true; };
+	Layer_listener->setSwallowTouches(false);//不向下传递触摸 add by njl
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(Layer_listener, p_Layer);//这里必须是m_pBg，改成this照样会向下传递
 #if 0  //无法解决代码创建的ControlButton的Scale问题遂放弃 改成静态获取
 	auto m_pBg = dynamic_cast<Sprite*> (p_Layer->getChildByName("options_1"));
 	//把关闭按钮放在最上层
