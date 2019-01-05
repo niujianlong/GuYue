@@ -30,7 +30,8 @@ public:
 	void gameOptionsReleaseAll(void);
 private:
 	void volBtnCallBack(Ref* sender = NULL, ui::TouchEventType touchEvent = ui::TouchEventType::TOUCH_EVENT_BEGAN);
-	void volSliderCallBack(Ref* sender = NULL, ui::TouchEventType touchEvent = ui::TouchEventType::TOUCH_EVENT_BEGAN);
+	void volSliderCallBack(Ref* sender = NULL, Slider::EventType touchEvent = Slider::EventType::ON_PERCENTAGE_CHANGED);
+	int getVolValue(void);
 
     //void onEnterTransitionDidFinish();
 };

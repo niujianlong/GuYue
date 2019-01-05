@@ -2,6 +2,8 @@
 
 #include "GameOptions.h"
 #include "GameScene.h"
+#include "SimpleAudioEngine.h"
+
 
 #if 0
 void GameOptions::onEnterTransitionDidFinish()
@@ -44,7 +46,7 @@ bool  GameOptions::init()
 
 	//Ìí¼ÓUIÂß¼­²¿·Ö
 	m_VolBtn->addTouchEventListener(this, toucheventselector(GameOptions::volBtnCallBack));
-	m_VolSlider->addEventListener(CC_CALLBACK_2(GameOptions::volSliderCallBack),this);
+	m_VolSlider->addEventListener(CC_CALLBACK_2(GameOptions::volSliderCallBack,this));
 
 	return true;
 }
@@ -66,6 +68,7 @@ void GameOptions::volBtnCallBack(Ref* sender, ui::TouchEventType touchEvent)
 			m_VolVal = 0;
 			m_VolSlider->setPercent(0);
 			m_VolValText->setText(std::to_string(m_VolVal));
+			CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(m_VolVal / 100.0);
 			isOffSound = true;
 		}
 		else
@@ -73,13 +76,14 @@ void GameOptions::volBtnCallBack(Ref* sender, ui::TouchEventType touchEvent)
 			m_VolBtn->loadTextureNormal("ui/tabbarMenu/button_volu.png");
 			isOffSound = false;
 		}
+		
 	}
 
 }
 
 void GameOptions::volSliderCallBack(Ref* sender, Slider::EventType touchEvent)
 {
-	if (ui::TouchEventType::TOUCH_EVENT_ENDED == touchEvent)
+	if (Slider::EventType::ON_PERCENTAGE_CHANGED == touchEvent)
 	{
 		m_VolVal = static_cast<Slider*> (sender)->getPercent();
 		if (0 == m_VolVal)
@@ -92,8 +96,13 @@ void GameOptions::volSliderCallBack(Ref* sender, Slider::EventType touchEvent)
 			m_VolBtn->loadTextureNormal("ui/tabbarMenu/button_volu.png");
 			isOffSound = false;
 		}
+		CocosDenshion::SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(m_VolVal / 100.0);
 		m_VolValText->setText(std::to_string(m_VolVal));
 	}
+}
+int GameOptions::getVolValue(void)
+{
+	return m_VolVal;
 }
 void GameOptions::gameOptionsReleaseAll(void)
 {
