@@ -5,15 +5,23 @@
       <RootFolder Name=".">
         <Image Name="anxia.png" />
         <Image Name="body.png" />
+        <Image Name="button_volu.png" />
+        <Image Name="button_volume_off.png" />
         <Image Name="closed_normal.png" />
         <Image Name="closed_selected.png" />
         <Image Name="foot.png" />
         <Image Name="hand.png" />
         <Image Name="head.png" />
+        <Image Name="huatiao.png" />
+        <Image Name="huatiaoanxia.png" />
         <Image Name="options.png" />
         <Image Name="queding01.png" />
+        <Image Name="queding01-copy.png" />
         <Image Name="RoleInfo.jpg" />
         <Project Name="RoleInfoPanel.csd" Type="Node" />
+        <Project Name="SetUpNode.csd" Type="Node" />
+        <Image Name="soundline1.png" />
+        <Image Name="soundline2.png" />
         <Project Name="TabBarMenu.csd" Type="Layer" />
         <Image Name="tabpic.png" />
       </RootFolder>

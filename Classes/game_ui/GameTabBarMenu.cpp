@@ -46,12 +46,26 @@ bool GameTabBarMenu::init()
 	auto button_Close = dynamic_cast<Button*> (p_Layer->getChildByName("Button_Close"));
 	button_Close->addTouchEventListener(this, toucheventselector(GameTabBarMenu::btnCloseCallBack));
     //Layout* widget = dynamic_cast<Layout*>(GUIReader::getInstance()->widgetFromJsonFile("ui/tabbarMenu/tabbarMenu.json"));
-	auto pNode0 = dynamic_cast<Node*> (p_Layer->getChildByName("Node_0"));
+	auto pNode0_RoleInfo = dynamic_cast<Node*> (p_Layer->getChildByName("Node_0"));
 	m_RoleInfo = RoleInfo::create();
 	//m_RoleInfo->retain();//这个还不能去掉，去掉会出错
 	m_RoleInfo->getNode()->setPosition(Vec2(0, 0));//Point(WINSIZE.width / 2, (WINSIZE.height + 80) / 2));
 	//m_RoleInfo->setZOrder(0xffff);
-	pNode0->addChild(m_RoleInfo->getNode());
+	pNode0_RoleInfo->addChild(m_RoleInfo->getNode());
+
+
+	//加入设置界面的显示
+	auto pNode4_Setting = dynamic_cast<Node*> (p_Layer->getChildByName("Node_4"));
+	m_GameOptions = GameOptions::create();
+	m_GameOptions->retain();//这里为什么要加这个，因为我要改变里面button的图片
+	m_GameOptions->getNode()->setPosition(Vec2(0.0, 0.0));
+	pNode4_Setting->addChild(m_GameOptions->getNode());
+
+
+
+
+
+
     if (p_Layer)
     {
         //widget->setTouchEnabled(true);
@@ -200,5 +214,6 @@ void GameTabBarMenu::btnCloseCallBack(Ref* sender, ui::TouchEventType touchEvent
 	if (ui::TouchEventType::TOUCH_EVENT_BEGAN == touchEvent)
 	{
 		GAME_UILAYER->hideTabBarMenuCall();
+		m_GameOptions->release();
 	}
 }

@@ -10,6 +10,7 @@
 #include "cocostudio/cocostudio.h"
 #include "RoleInfo.h"
 #include "TabUiControl.h"
+#include "GameOptions.h"
 USING_NS_CC;
 USING_NS_CC_EXT;
 using namespace ui;
@@ -17,6 +18,7 @@ using namespace cocostudio;
 class GameTabBarMenu: public Layer {
     
 	CC_SYNTHESIZE_READONLY(RoleInfo*, m_RoleInfo, RoleInfo);
+	CC_SYNTHESIZE_READONLY(GameOptions*, m_GameOptions, GameOptions);
 public:
     
     CREATE_FUNC(GameTabBarMenu);
