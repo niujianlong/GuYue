@@ -214,6 +214,6 @@ void GameTabBarMenu::btnCloseCallBack(Ref* sender, ui::TouchEventType touchEvent
 	if (ui::TouchEventType::TOUCH_EVENT_BEGAN == touchEvent)
 	{
 		GAME_UILAYER->hideTabBarMenuCall();
-		m_GameOptions->release();
+		//m_GameOptions->release(); 不能在这里进行，需要在游戏整体结束的时候进行析构，否则你再次打开的时候会引起崩溃
 	}
 }

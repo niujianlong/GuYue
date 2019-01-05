@@ -21,13 +21,17 @@ private:
 	Button* m_VolBtn;
 	Slider* m_VolSlider;
 	Text*  m_VolValText; 
+	int m_VolVal = 10;
+	static bool isOffSound;
 public:
 	bool init(void);
     CREATE_FUNC(GameOptions);
 	Node* getNode(void);
+	void gameOptionsReleaseAll(void);
 private:
 	void volBtnCallBack(Ref* sender = NULL, ui::TouchEventType touchEvent = ui::TouchEventType::TOUCH_EVENT_BEGAN);
-    
+	void volSliderCallBack(Ref* sender = NULL, ui::TouchEventType touchEvent = ui::TouchEventType::TOUCH_EVENT_BEGAN);
+
     //void onEnterTransitionDidFinish();
 };
 
