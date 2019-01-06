@@ -21,7 +21,7 @@ private:
 	Button* m_VolBtn;
 	Slider* m_VolSlider;
 	Text*  m_VolValText; 
-	int m_VolVal = 10;
+	int m_VolVal = 20;
 	static bool isOffSound;
 public:
 	bool init(void);

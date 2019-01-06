@@ -5,10 +5,10 @@
 
 #define GRID_WIDTH 39
 #define GRID_HEIGHT 35
-#define PROP_X 88
-#define PROP_Y 80
-#define COL 10
-#define ROW 6
+#define PROP_X 284
+#define PROP_Y 74
+#define COL 5
+#define ROW 7
 
 PropColumnMenu::PropColumnMenu()
 :m_editProp(NULL)
@@ -36,22 +36,34 @@ bool PropColumnMenu::init()
     if (!Layer::init())
         return false;
     
-    this->setTouchEnabled(true);
-    
-    Sprite* bg = Sprite::create("ui/prop_column.png");
-    this->addChild(bg);
+    //this->setTouchEnabled(true);
+	FileUtils::getInstance()->addSearchPath("ui/tabbarMenu");
+	m_Node = CSLoader::createNode("ui/tabbarMenu/BackPack.csb");
+	m_Node->retain();
+	Sprite* bg = dynamic_cast<Sprite*>(m_Node->getChildByName("Sprite_1"));//Sprite::create("ui/prop_column.png");
+	m_Node->setPosition(Vec2(0.0,0.0));
+    this->addChild(m_Node);
     
     m_propColumn = LayerColor::create(ccc4(255, 255, 255, 0), GRID_WIDTH*COL, GRID_HEIGHT*ROW);
     m_propColumn->setContentSize(Size(GRID_WIDTH*COL, GRID_HEIGHT*ROW));
     m_propColumn->setPosition(Point(PROP_X, PROP_Y));
+	auto propColumn_Listenner = EventListenerTouchOneByOne::create();
+	propColumn_Listenner->onTouchBegan = CC_CALLBACK_2(PropColumnMenu::onTouchBegan, this);
+	propColumn_Listenner->onTouchMoved = CC_CALLBACK_2(PropColumnMenu::onTouchMoved, this);
+	propColumn_Listenner->onTouchEnded = CC_CALLBACK_2(PropColumnMenu::onTouchEnded, this);
+	Director::getInstance()->getEventDispatcher()->addEventListenerWithSceneGraphPriority(propColumn_Listenner, m_propColumn);
+
     bg->addChild(m_propColumn);
     
-    ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
-    button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
-    button->setPreferredSize(Size(57, 58));
-    button->setPosition(ccpSub(ccpAdd(bg->getPosition(), bg->getContentSize()/2), button->getContentSize()/2));
-    this->addChild(button);
-    button->addTargetWithActionForControlEvents(GAME_UILAYER, cccontrol_selector(GameInfoUIController::removeSmallMenuAndButton), Control::EventType::TOUCH_UP_INSIDE);
+#if 0
+	ControlButton* button = ControlButton::create(Scale9Sprite::create("ui/closed_normal.png"));
+	button->setBackgroundSpriteForState(Scale9Sprite::create("ui/closed_selected.png"), Control::State::HIGH_LIGHTED);
+	button->setPreferredSize(Size(57, 58));
+	button->setPosition(ccpSub(ccpAdd(bg->getPosition(), bg->getContentSize() / 2), button->getContentSize() / 2));
+	this->addChild(button);
+	button->addTargetWithActionForControlEvents(GAME_UILAYER, cccontrol_selector(GameInfoUIController::removeSmallMenuAndButton), Control::EventType::TOUCH_UP_INSIDE);
+#endif // 0
+
    // button->setTouchPriority(0);
     
     for (int i=0; i<12; i++)
@@ -125,6 +137,7 @@ void PropColumnMenu::swapProp(int a, int b)
 
 bool PropColumnMenu::onTouchBegan(Touch *pTouch, Event *pEvent)
 {
+	log("PropColumnMenu::onTouchBegan");
     Point point = pTouch->getLocation();
     
     Rect rect = Rect::ZERO;
@@ -156,14 +169,16 @@ bool PropColumnMenu::onTouchBegan(Touch *pTouch, Event *pEvent)
 
 void PropColumnMenu::onTouchMoved(Touch *pTouch, Event *pEvent)
 {
+	log("PropColumnMenu::onTouchMoved");
+
     Point point = pTouch->getLocation();
     
     m_editProp->setPosition(point);
     
     do
     {
-        ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
-        
+        //ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
+		Button* btn = dynamic_cast<Button*>(m_Node->getChildByName("head"));
         Rect rect;
         rect.origin = btn->convertToWorldSpace(Point::ZERO);
         rect.size = btn->getContentSize();
@@ -172,7 +187,7 @@ void PropColumnMenu::onTouchMoved(Touch *pTouch, Event *pEvent)
             CC_BREAK_IF(m_editProp->getOpacity() == 255);
             m_editProp->setOpacity(255);
             btn->stopAllActions();
-            ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.1f);
+            ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.2f);
             btn->runAction(scaleTo);
         }
         else
@@ -189,6 +204,8 @@ void PropColumnMenu::onTouchMoved(Touch *pTouch, Event *pEvent)
 
 void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 {
+	log("PropColumnMenu::onTouchEnded");
+
     Point point = pTouch->getLocation();
     
     Rect rect = Rect::ZERO;

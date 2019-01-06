@@ -4,17 +4,21 @@
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
         <Image Name="anxia.png" />
+        <Project Name="BackPack.csd" Type="Node" />
         <Image Name="body.png" />
         <Image Name="button_volu.png" />
         <Image Name="button_volume_off.png" />
         <Image Name="closed_normal.png" />
         <Image Name="closed_selected.png" />
         <Image Name="foot.png" />
+        <Image Name="groove_normal.png" />
+        <Image Name="groove_selected.png" />
         <Image Name="hand.png" />
         <Image Name="head.png" />
         <Image Name="huatiao.png" />
         <Image Name="huatiaoanxia.png" />
         <Image Name="options.png" />
+        <Image Name="prop_column.png" />
         <Image Name="queding01.png" />
         <Image Name="queding01-copy.png" />
         <Image Name="RoleInfo.jpg" />

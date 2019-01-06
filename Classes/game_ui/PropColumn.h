@@ -17,7 +17,8 @@ class PropColumnMenu: public Layer {
     PropIconShow** m_propVec;
     
     PropIconShow* m_editProp;
-
+private:
+	Node* m_Node;
 public:
     
     PropColumnMenu();

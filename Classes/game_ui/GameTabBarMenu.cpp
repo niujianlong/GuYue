@@ -62,7 +62,12 @@ bool GameTabBarMenu::init()
 	pNode4_Setting->addChild(m_GameOptions->getNode());
 
 
-
+	//加入背包的显示
+	auto pNode1_BackPack = dynamic_cast<Node*> (p_Layer->getChildByName("Node_1"));
+	PropColumnMenu* backPackLayer = PropColumnMenu::create();
+	backPackLayer->retain();
+	backPackLayer->setPosition(Vec2(0.0,0.0));
+	pNode1_BackPack->addChild(backPackLayer);
 
 
 
