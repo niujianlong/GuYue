@@ -42,6 +42,8 @@ bool PropColumnMenu::init()
 	m_Node->retain();
 	Sprite* bg = dynamic_cast<Sprite*>(m_Node->getChildByName("Sprite_1"));//Sprite::create("ui/prop_column.png");
 	m_Node->setPosition(Vec2(0.0,0.0));
+	auto pScrollView = m_Node->getChildByName<ui::ScrollView*>("ScrollView_1");
+	pScrollView->setClippingType(ui::Layout::ClippingType::SCISSOR);
     this->addChild(m_Node);
     
     m_propColumn = LayerColor::create(ccc4(255, 255, 255, 0), GRID_WIDTH*COL, GRID_HEIGHT*ROW);

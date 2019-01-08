@@ -69,6 +69,7 @@ bool GameTabBarMenu::init()
 	backPackLayer->setPosition(Vec2(0.0,0.0));
 	pNode1_BackPack->addChild(backPackLayer);
 
+	
 
 
     if (p_Layer)
