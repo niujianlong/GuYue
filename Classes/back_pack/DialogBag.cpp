@@ -1,3 +1,5 @@
+#include "DialogBag.h"
+
 bool DialogBag::init()
 {
     Layer::init();

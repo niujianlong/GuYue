@@ -1,5 +1,5 @@
-#include “NodeBagItem.h”
-static const std::string text1 = “\xE7\xA9\xBA”;//空
+#include "NodeBagItem.h"
+static const std::string text1 = "Test";//“\xE7\xA9\xBA”;//空
 
 bool NodeBagItem::init() 
 { 
@@ -61,7 +61,6 @@ void NodeBagItem::setSelected(bool isSelected)
 this->isSelected_ = isSelected;
 
 isSelected_sp->setVisible(isSelected);
-1
 }
 
 int64_t NodeBagItem::get_sno() 
