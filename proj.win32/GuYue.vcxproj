@@ -148,6 +148,10 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\back_pack\DialogBag.cpp" />
+    <ClCompile Include="..\Classes\back_pack\NodeBagGrid.cpp" />
+    <ClCompile Include="..\Classes\back_pack\NodeBagItem.cpp" />
+    <ClCompile Include="..\Classes\back_pack\NodeBagItemModel.cpp" />
     <ClCompile Include="..\Classes\figure\Enemy.cpp" />
     <ClCompile Include="..\Classes\figure\Figure.cpp" />
     <ClCompile Include="..\Classes\figure\Monomer.cpp" />
@@ -207,6 +211,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\back_pack\DialogBag.h" />
+    <ClInclude Include="..\Classes\back_pack\DialogBagModel.h" />
+    <ClInclude Include="..\Classes\back_pack\NodeBagGrid.h" />
+    <ClInclude Include="..\Classes\back_pack\NodeBagItem.h" />
+    <ClInclude Include="..\Classes\back_pack\NodeBagItemModel.h" />
     <ClInclude Include="..\Classes\figure\Enemy.h" />
     <ClInclude Include="..\Classes\figure\Figure.h" />
     <ClInclude Include="..\Classes\figure\Monomer.h" />
