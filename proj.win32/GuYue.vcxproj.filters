@@ -31,6 +31,9 @@
     <Filter Include="src\UiControl">
       <UniqueIdentifier>{d1e51144-743f-421f-98aa-6e92c428301b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\back_pack">
+      <UniqueIdentifier>{c02560ed-2ba0-4576-a07c-09771d1a1105}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -203,6 +206,18 @@
     </ClCompile>
     <ClCompile Include="..\Classes\game_ui\TabUiControl.cpp">
       <Filter>src\game_ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\back_pack\DialogBag.cpp">
+      <Filter>src\back_pack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\back_pack\NodeBagGrid.cpp">
+      <Filter>src\back_pack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\back_pack\NodeBagItem.cpp">
+      <Filter>src\back_pack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\back_pack\NodeBagItemModel.cpp">
+      <Filter>src\back_pack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -385,6 +400,21 @@
     </ClInclude>
     <ClInclude Include="..\Classes\game_ui\TabUiControl.h">
       <Filter>src\game_ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\back_pack\DialogBag.h">
+      <Filter>src\back_pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\back_pack\DialogBagModel.h">
+      <Filter>src\back_pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\back_pack\NodeBagGrid.h">
+      <Filter>src\back_pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\back_pack\NodeBagItem.h">
+      <Filter>src\back_pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\back_pack\NodeBagItemModel.h">
+      <Filter>src\back_pack</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
