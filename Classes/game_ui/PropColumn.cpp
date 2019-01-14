@@ -234,9 +234,11 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 		y = ROW - y - 1;
 		m_propVec[m_editProp->getTag()]->setVisible(true);
 		this->swapProp(m_editProp->getTag(), y*COL + x);
+		m_editProp->removeFromParent();
 	}
 	else
 	{
+		bool isEquipTouch = false;
 		for (int i = 0; i < m_EquipVec.size(); i++)
 		{
 			Rect rect;
@@ -257,16 +259,13 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 				m_EquipVec[i]->runAction(scaleTo);
 				m_EquipVec[i]->addChild(m_editProp);
 				m_editProp->release();
+				isEquipTouch = true;
 				break;
 				//m_propVec[m_editProp->getTag()]->removeFromParent();
 				//m_propVec[m_editProp->getTag()] = NULL;
 			}
-			else
-			{
-				m_editProp->setVisible(false);
-				m_propVec[m_CurrentSlectProp]->setVisible(true);
-			}
-	
+
+
 #if 0  //老的处理是放在地图上，我现在的处理是想让它回归原位。
 			else
 			{
@@ -318,6 +317,11 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 
 			}
 #endif
+		}
+		if (false == isEquipTouch)
+		{
+			m_editProp->removeFromParent();
+			m_propVec[m_CurrentSlectProp]->setVisible(true);
 		}
 	}
 	//m_editProp->removeFromParent();
