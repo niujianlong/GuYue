@@ -42,7 +42,7 @@ bool PropColumnMenu::init()
 	m_Node->retain();
 	Sprite* bg = dynamic_cast<Sprite*>(m_Node->getChildByName("Sprite_1"));//Sprite::create("ui/prop_column.png");
 	m_head = dynamic_cast<Button*>(m_Node->getChildByName("head"));
-	m_head ->retain();
+	//m_head ->retain();
 	m_Node->setPosition(Vec2(0.0,0.0));
 #if 0
 	auto pScrollView = m_Node->getChildByName<ui::ScrollView*>("ScrollView_1");
@@ -242,7 +242,8 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 			m_head->stopAllActions();
             ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
 			m_head->runAction(scaleTo);
-			m_head->addChild(m_editProp, 0xffff);
+			m_head->addChild(m_editProp);
+			m_editProp->release();
             //m_propVec[m_editProp->getTag()]->removeFromParent();
             //m_propVec[m_editProp->getTag()] = NULL;
         }
