@@ -7,6 +7,7 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "PropIconShow.h"
+#include <vector>
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -20,6 +21,12 @@ class PropColumnMenu: public Layer {
 private:
 	Node* m_Node;
 	ui::Button* m_head;
+	ui::Button* m_foot;
+	ui::Button* m_hand;
+	ui::Button* m_body;
+	std::vector<ui::Button*> m_EquipVec;
+	int m_CurrentSlectProp;
+
 public:
     
     PropColumnMenu();
