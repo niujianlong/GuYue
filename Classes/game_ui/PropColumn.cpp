@@ -41,11 +41,15 @@ bool PropColumnMenu::init()
 	m_Node = CSLoader::createNode("ui/tabbarMenu/BackPack.csb");
 	m_Node->retain();
 	Sprite* bg = dynamic_cast<Sprite*>(m_Node->getChildByName("Sprite_1"));//Sprite::create("ui/prop_column.png");
+	m_head = dynamic_cast<Button*>(m_Node->getChildByName("head"));
+	m_head ->retain();
 	m_Node->setPosition(Vec2(0.0,0.0));
+#if 0
 	auto pScrollView = m_Node->getChildByName<ui::ScrollView*>("ScrollView_1");
 	pScrollView->setClippingType(ui::Layout::ClippingType::SCISSOR);
+#endif
     this->addChild(m_Node);
-    
+
     m_propColumn = LayerColor::create(ccc4(255, 255, 255, 0), GRID_WIDTH*COL, GRID_HEIGHT*ROW);
     m_propColumn->setContentSize(Size(GRID_WIDTH*COL, GRID_HEIGHT*ROW));
     m_propColumn->setPosition(Point(PROP_X, PROP_Y));
@@ -180,25 +184,25 @@ void PropColumnMenu::onTouchMoved(Touch *pTouch, Event *pEvent)
     do
     {
         //ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
-		Button* btn = dynamic_cast<Button*>(m_Node->getChildByName("head"));
+		//Button* btn = dynamic_cast<Button*>(m_Node->getChildByName("head"));
         Rect rect;
-        rect.origin = btn->convertToWorldSpace(Point::ZERO);
-        rect.size = btn->getContentSize();
+        rect.origin = m_head->convertToWorldSpace(Point::ZERO);
+        rect.size = m_head->getContentSize();
         if (rect.containsPoint(point))
         {
             CC_BREAK_IF(m_editProp->getOpacity() == 255);
             m_editProp->setOpacity(255);
-            btn->stopAllActions();
+			m_head->stopAllActions();
             ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.2f);
-            btn->runAction(scaleTo);
+			m_head->runAction(scaleTo);
         }
         else
         {
             CC_BREAK_IF(m_editProp->getOpacity() == 127);
             m_editProp->setOpacity(127);
-            btn->stopAllActions();
+			m_head->stopAllActions();
             ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
-            btn->runAction(scaleTo);
+			m_head->runAction(scaleTo);
         }
     }
     while (0);
@@ -227,13 +231,20 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
     {
         if (m_editProp->getOpacity() == 255)
         {
-            GAME_UILAYER->getOperationMenu()->addDrugs(2001);
-            ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
-            btn->stopAllActions();
+            //GAME_UILAYER->getOperationMenu()->addDrugs(2001);
+            //ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
+			m_editProp -> retain();
+			GAME_UILAYER->removeChild(m_editProp,false);
+			//m_editProp->removeFromParent();
+			//GAME_UILAYER->removeObject(m_editProp,false);
+			auto PositonTemp = m_head->getContentSize() / 2;
+			m_editProp->setPosition(PositonTemp);
+			m_head->stopAllActions();
             ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
-            btn->runAction(scaleTo);
-            m_propVec[m_editProp->getTag()]->removeFromParent();
-            m_propVec[m_editProp->getTag()] = NULL;
+			m_head->runAction(scaleTo);
+			m_head->addChild(m_editProp, 0xffff);
+            //m_propVec[m_editProp->getTag()]->removeFromParent();
+            //m_propVec[m_editProp->getTag()] = NULL;
         }
         else
         {
@@ -286,6 +297,6 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
             
         }
     }
-    m_editProp->removeFromParent();
-    m_editProp = NULL;
+    //m_editProp->removeFromParent();
+    //m_editProp = NULL;
 }

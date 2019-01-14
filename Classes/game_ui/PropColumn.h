@@ -19,6 +19,7 @@ class PropColumnMenu: public Layer {
     PropIconShow* m_editProp;
 private:
 	Node* m_Node;
+	ui::Button* m_head;
 public:
     
     PropColumnMenu();
