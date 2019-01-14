@@ -11,6 +11,12 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
+class EquipMentBtnInfo {
+public:
+	ui::Button* btn;
+	int EquipmentType;
+};
+
 class PropColumnMenu: public Layer {
     
     LayerColor* m_propColumn;
@@ -24,7 +30,7 @@ private:
 	ui::Button* m_foot;
 	ui::Button* m_hand;
 	ui::Button* m_body;
-	std::vector<ui::Button*> m_EquipVec;
+	std::vector<EquipMentBtnInfo*> m_EquipVec;
 	int m_CurrentSlectProp;
 
 public:

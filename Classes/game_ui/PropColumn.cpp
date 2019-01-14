@@ -43,13 +43,25 @@ bool PropColumnMenu::init()
 	m_Node->retain();
 	Sprite* bg = dynamic_cast<Sprite*>(m_Node->getChildByName("Sprite_1"));//Sprite::create("ui/prop_column.png");
 	m_head = dynamic_cast<Button*>(m_Node->getChildByName("head"));
-	m_EquipVec.push_back(m_head);
+	EquipMentBtnInfo* headInfo = new EquipMentBtnInfo();
+	headInfo->btn = m_head;
+	headInfo->EquipmentType = PropInfo::EQUIP_TYPE_HEAD;
+	m_EquipVec.push_back(headInfo);
 	m_foot = m_Node->getChildByName<Button*>("foot");
-	m_EquipVec.push_back(m_foot);
+	EquipMentBtnInfo* footInfo = new EquipMentBtnInfo();
+	footInfo->btn = m_foot;
+	footInfo->EquipmentType = PropInfo::EQUIP_TYPE_FOOT;
+	m_EquipVec.push_back(footInfo);
 	m_hand = m_Node->getChildByName<Button*>("hand");
-	m_EquipVec.push_back(m_hand);
+	EquipMentBtnInfo* handInfo = new EquipMentBtnInfo();
+	handInfo->btn = m_hand;
+	handInfo->EquipmentType = PropInfo::EQUIP_TYPE_HAND;
+	m_EquipVec.push_back(handInfo);
 	m_body = m_Node->getChildByName<Button*>("body");
-	m_EquipVec.push_back(m_body);
+	EquipMentBtnInfo* bodyInfo = new EquipMentBtnInfo();
+	bodyInfo->btn = m_body;
+	bodyInfo->EquipmentType = PropInfo::EQUIP_TYPE_BODY;
+	m_EquipVec.push_back(bodyInfo);
 	//m_head ->retain();
 	m_Node->setPosition(Vec2(0.0, 0.0));
 #if 0
@@ -166,6 +178,7 @@ bool PropColumnMenu::onTouchBegan(Touch *pTouch, Event *pEvent)
 		{
 			m_propVec[i]->setVisible(false);
 			m_editProp = PropIconShow::create(m_propVec[i]->getPropInfo());
+			m_editProp->m_EquipmentType = PropSystem::getPropInfo(i + 1)->getEquipmentType();
 			m_editProp->setPosition(point);
 			GAME_UILAYER->addChild(m_editProp);
 			m_editProp->setTag(i);
@@ -194,23 +207,23 @@ void PropColumnMenu::onTouchMoved(Touch *pTouch, Event *pEvent)
 		//ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
 		//Button* btn = dynamic_cast<Button*>(m_Node->getChildByName("head"));
 		Rect rect;
-		rect.origin = m_EquipVec[i]->convertToWorldSpace(Point::ZERO);
-		rect.size = m_EquipVec[i]->getContentSize();
+		rect.origin = m_EquipVec[i]->btn->convertToWorldSpace(Point::ZERO);
+		rect.size = m_EquipVec[i]->btn->getContentSize();
 		if (rect.containsPoint(point))
 		{
 			//CC_BREAK_IF(m_editProp->getOpacity() == 255);
 			//m_editProp->setOpacity(255);
-			m_EquipVec[i]->stopAllActions();
+			m_EquipVec[i]->btn->stopAllActions();
 			ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.2f);
-			m_EquipVec[i]->runAction(scaleTo);
+			m_EquipVec[i]->btn->runAction(scaleTo);
 		}
 		else
 		{
 			//CC_BREAK_IF(m_editProp->getOpacity() == 127);
 			m_editProp->setOpacity(127);
-			m_EquipVec[i]->stopAllActions();
+			m_EquipVec[i]->btn->stopAllActions();
 			ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
-			m_EquipVec[i]->runAction(scaleTo);
+			m_EquipVec[i]->btn->runAction(scaleTo);
 		}
 	}
 
@@ -242,9 +255,9 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 		for (int i = 0; i < m_EquipVec.size(); i++)
 		{
 			Rect rect;
-			rect.origin = m_EquipVec[i]->convertToWorldSpace(Point::ZERO);
-			rect.size = m_EquipVec[i]->getContentSize();
-			if (rect.containsPoint(point))
+			rect.origin = m_EquipVec[i]->btn->convertToWorldSpace(Point::ZERO);
+			rect.size = m_EquipVec[i]->btn->getContentSize();
+			if (rect.containsPoint(point)&&(m_EquipVec[i]->EquipmentType== m_editProp->m_EquipmentType))
 			{
 				//GAME_UILAYER->getOperationMenu()->addDrugs(2001);
 				//ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
@@ -253,11 +266,11 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 				GAME_UILAYER->removeChild(m_editProp, false);
 				//m_editProp->removeFromParent();
 				//GAME_UILAYER->removeObject(m_editProp,false);
-				m_editProp->setPosition(m_EquipVec[i]->getContentSize() / 2);
-				m_EquipVec[i]->stopAllActions();
+				m_editProp->setPosition(m_EquipVec[i]->btn->getContentSize() / 2);
+				m_EquipVec[i]->btn->stopAllActions();
 				ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
-				m_EquipVec[i]->runAction(scaleTo);
-				m_EquipVec[i]->addChild(m_editProp);
+				m_EquipVec[i]->btn->runAction(scaleTo);
+				m_EquipVec[i]->btn->addChild(m_editProp);
 				m_editProp->release();
 				isEquipTouch = true;
 				break;

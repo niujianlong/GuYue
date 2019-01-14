@@ -36,6 +36,7 @@ PropInfo::PropInfo(rapidjson::Value & json)
 ,m_lucky(json["Lucky"].GetUint())
 ,m_SE(json["SE"].GetUint())
 ,m_JS(json["JS"].GetUint())
+,m_EquipmentType(json["EquipmentType"].GetUint())
 {
    printf("PropSystem\n %d,%s",m_propNumber, m_propName.c_str());
 }

@@ -76,8 +76,18 @@ class PropInfo {
     CC_SYNTHESIZE_READONLY(int, m_SE, SE);
     
     CC_SYNTHESIZE_READONLY(int, m_JS, JS);
+	CC_SYNTHESIZE_READONLY(int, m_EquipmentType, EquipmentType);
+
     
 public:
+	enum {
+		EQUIP_TYPE_DRUG,   //药
+		EQUIP_TYPE_BOOK,   //技能书
+		EQUIP_TYPE_HEAD,   //头装备
+		EQUIP_TYPE_FOOT,   //脚
+		EQUIP_TYPE_HAND,   //手
+		EQUIP_TYPE_BODY	   //身
+	};
     
     PropInfo(rapidjson::Value & json);
     

@@ -13,12 +13,17 @@ class PropIconShow: public Sprite {
     string m_path;
     
 public:
+	
     
     PropIconShow(PropInfo* propInfo);
     
     virtual ~PropIconShow();
     
     static PropIconShow* create(PropInfo* propInfo);
+	int m_EquipmentType;
+
+	
+
     
 };
 
