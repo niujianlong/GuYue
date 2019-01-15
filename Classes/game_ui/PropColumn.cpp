@@ -181,21 +181,28 @@ bool PropColumnMenu::onTouchBegan(Touch *pTouch, Event *pEvent)
 	{
 		if (m_propVec[i] && this->getPropRect(i).containsPoint(point))
 		{
-			m_propVec[i]->setVisible(false);
+			//m_propVec[i]->setVisible(false);
+			m_propVec[i]->retain();
+			m_propVec[i]->removeFromParent();
+			m_propVec[i]->setPosition(point);
+			GAME_UILAYER->addChild(m_propVec[i]);
+			m_propVec[i]->release();
+			m_PreSlectProp = m_CurrentSlectProp;
+			m_CurrentSlectProp = i;
+#if 0
 			m_editProp = PropIconShow::create(m_propVec[i]->getPropInfo());
 			m_editProp->m_EquipmentType = PropSystem::getPropInfo(i + 1)->getEquipmentType();
 			m_editProp->setPosition(point);
 			GAME_UILAYER->addChild(m_editProp);
 			m_editProp->setTag(i);
 			m_editProp->setOpacity(127);
-			m_PreSlectProp = m_CurrentSlectProp;
-			m_CurrentSlectProp = i;
+#endif
 			break;
 		}
 	}
 
-	if (m_editProp == NULL)
-		return false;
+	//if (m_editProp == NULL)
+		//return false;
 
 	return true;
 }
@@ -206,7 +213,7 @@ void PropColumnMenu::onTouchMoved(Touch *pTouch, Event *pEvent)
 
 	Point point = pTouch->getLocation();
 
-	m_editProp->setPosition(point);
+	m_propVec[m_CurrentSlectProp]->setPosition(point);
 
 	for (int i = 0; i < m_EquipVec.size(); ++i)
 	{
@@ -226,7 +233,7 @@ void PropColumnMenu::onTouchMoved(Touch *pTouch, Event *pEvent)
 		else
 		{
 			//CC_BREAK_IF(m_editProp->getOpacity() == 127);
-			m_editProp->setOpacity(127);
+			m_propVec[m_CurrentSlectProp]->setOpacity(127);
 			m_EquipVec[i]->btn->stopAllActions();
 			ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
 			m_EquipVec[i]->btn->runAction(scaleTo);
@@ -251,9 +258,13 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 		int x = (int)point.x / GRID_WIDTH;
 		int y = (int)point.y / GRID_HEIGHT;
 		y = ROW - y - 1;
-		m_propVec[m_editProp->getTag()]->setVisible(true);
-		this->swapProp(m_editProp->getTag(), y*COL + x);
-		m_editProp->removeFromParent();
+		m_propVec[m_CurrentSlectProp]->retain();
+		m_propVec[m_CurrentSlectProp]->removeFromParent();
+		m_propColumn->addChild(m_propVec[m_CurrentSlectProp]);
+		m_propVec[m_CurrentSlectProp]->setOpacity(255);
+		m_propVec[m_CurrentSlectProp]->release();
+		this->swapProp(m_CurrentSlectProp, y*COL + x);
+		//m_editProp->removeFromParent();
 	}
 	else
 	{
@@ -270,22 +281,22 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 				m_EquipVec[i]->btn->runAction(scaleTo);
 				//GAME_UILAYER->getOperationMenu()->addDrugs(2001);
 				//ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
-				if (m_EquipVec[i]->EquipmentType == m_editProp->m_EquipmentType) 
+				if (m_EquipVec[i]->EquipmentType == PropSystem::getPropInfo(m_CurrentSlectProp + 1)->getEquipmentType())
 				{
-					m_editProp->retain();
-					m_editProp->setOpacity(255);
-					GAME_UILAYER->removeChild(m_editProp, false);
+					m_propVec[m_CurrentSlectProp]->retain();
+					m_propVec[m_CurrentSlectProp]->setOpacity(255);
+					GAME_UILAYER->removeChild(m_propVec[m_CurrentSlectProp], false);
 					//m_editProp->removeFromParent();
 					//GAME_UILAYER->removeObject(m_editProp,false);
-					m_editProp->setPosition(m_EquipVec[i]->btn->getContentSize() / 2);
+					m_propVec[m_CurrentSlectProp]->setPosition(m_EquipVec[i]->btn->getContentSize() / 2);
 					if (m_EquipVec[i]->haveEquiped == true) 
 					{
-						m_propVec[m_PreSlectProp]->setVisible(true);
-						m_EquipVec[i]->btn->removeAllChildren();
+						//m_propVec[m_PreSlectProp]->setVisible(true);
+						//m_EquipVec[i]->btn->removeAllChildren();
 					}
-					m_EquipVec[i]->btn->addChild(m_editProp);
+					m_EquipVec[i]->btn->addChild(m_propVec[m_CurrentSlectProp]);
 					m_EquipVec[i]->haveEquiped = true;
-					m_editProp->release();
+					m_propVec[m_CurrentSlectProp]->release();
 					isEquipTouch = true;
 					break;
 				}
@@ -348,8 +359,8 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 		}
 		if (false == isEquipTouch)
 		{
-			m_editProp->removeFromParent();
-			m_propVec[m_CurrentSlectProp]->setVisible(true);
+			m_propVec[m_CurrentSlectProp]->removeFromParent();
+			//m_propVec[m_CurrentSlectProp]->setVisible(true);
 		}
 	}
 	//m_editProp->removeFromParent();
