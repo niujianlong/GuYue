@@ -33,6 +33,7 @@ private:
 	ui::Button* m_body;
 	std::vector<EquipMentBtnInfo*> m_EquipVec;
 	int m_CurrentSlectProp;
+	int m_PreSlectProp;
 
 public:
     

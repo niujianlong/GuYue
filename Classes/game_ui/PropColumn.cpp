@@ -19,6 +19,7 @@ PropColumnMenu::PropColumnMenu()
 		m_propVec[i] = NULL;
 	}
 	m_CurrentSlectProp = 0;
+	m_PreSlectProp = 0;
 }
 
 PropColumnMenu::~PropColumnMenu()
@@ -187,6 +188,7 @@ bool PropColumnMenu::onTouchBegan(Touch *pTouch, Event *pEvent)
 			GAME_UILAYER->addChild(m_editProp);
 			m_editProp->setTag(i);
 			m_editProp->setOpacity(127);
+			m_PreSlectProp = m_CurrentSlectProp;
 			m_CurrentSlectProp = i;
 			break;
 		}
@@ -263,6 +265,7 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 			rect.size = m_EquipVec[i]->btn->getContentSize();
 			if (rect.containsPoint(point))
 			{
+				m_EquipVec[i]->btn->stopAllActions();
 				ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
 				m_EquipVec[i]->btn->runAction(scaleTo);
 				//GAME_UILAYER->getOperationMenu()->addDrugs(2001);
@@ -275,17 +278,15 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 					//m_editProp->removeFromParent();
 					//GAME_UILAYER->removeObject(m_editProp,false);
 					m_editProp->setPosition(m_EquipVec[i]->btn->getContentSize() / 2);
-					m_EquipVec[i]->btn->stopAllActions();
 					if (m_EquipVec[i]->haveEquiped == true) 
 					{
+						m_propVec[m_PreSlectProp]->setVisible(true);
 						m_EquipVec[i]->btn->removeAllChildren();
 					}
 					m_EquipVec[i]->btn->addChild(m_editProp);
 					m_EquipVec[i]->haveEquiped = true;
 					m_editProp->release();
 					isEquipTouch = true;
-					ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
-					m_EquipVec[i]->btn->runAction(scaleTo);
 					break;
 				}
 				//m_propVec[m_editProp->getTag()]->removeFromParent();
