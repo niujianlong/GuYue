@@ -15,6 +15,7 @@ class EquipMentBtnInfo {
 public:
 	ui::Button* btn;
 	int EquipmentType;
+	bool haveEquiped;
 };
 
 class PropColumnMenu: public Layer {

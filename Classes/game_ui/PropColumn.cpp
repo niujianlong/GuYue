@@ -46,21 +46,25 @@ bool PropColumnMenu::init()
 	EquipMentBtnInfo* headInfo = new EquipMentBtnInfo();
 	headInfo->btn = m_head;
 	headInfo->EquipmentType = PropInfo::EQUIP_TYPE_HEAD;
+	headInfo->haveEquiped = false;
 	m_EquipVec.push_back(headInfo);
 	m_foot = m_Node->getChildByName<Button*>("foot");
 	EquipMentBtnInfo* footInfo = new EquipMentBtnInfo();
 	footInfo->btn = m_foot;
 	footInfo->EquipmentType = PropInfo::EQUIP_TYPE_FOOT;
+	footInfo->haveEquiped = false;
 	m_EquipVec.push_back(footInfo);
 	m_hand = m_Node->getChildByName<Button*>("hand");
 	EquipMentBtnInfo* handInfo = new EquipMentBtnInfo();
 	handInfo->btn = m_hand;
 	handInfo->EquipmentType = PropInfo::EQUIP_TYPE_HAND;
+	handInfo->haveEquiped = false;
 	m_EquipVec.push_back(handInfo);
 	m_body = m_Node->getChildByName<Button*>("body");
 	EquipMentBtnInfo* bodyInfo = new EquipMentBtnInfo();
 	bodyInfo->btn = m_body;
 	bodyInfo->EquipmentType = PropInfo::EQUIP_TYPE_BODY;
+	bodyInfo->haveEquiped = false;
 	m_EquipVec.push_back(bodyInfo);
 	//m_head ->retain();
 	m_Node->setPosition(Vec2(0.0, 0.0));
@@ -257,23 +261,33 @@ void PropColumnMenu::onTouchEnded(Touch *pTouch, Event *pEvent)
 			Rect rect;
 			rect.origin = m_EquipVec[i]->btn->convertToWorldSpace(Point::ZERO);
 			rect.size = m_EquipVec[i]->btn->getContentSize();
-			if (rect.containsPoint(point)&&(m_EquipVec[i]->EquipmentType== m_editProp->m_EquipmentType))
+			if (rect.containsPoint(point))
 			{
-				//GAME_UILAYER->getOperationMenu()->addDrugs(2001);
-				//ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
-				m_editProp->retain();
-				m_editProp->setOpacity(255);
-				GAME_UILAYER->removeChild(m_editProp, false);
-				//m_editProp->removeFromParent();
-				//GAME_UILAYER->removeObject(m_editProp,false);
-				m_editProp->setPosition(m_EquipVec[i]->btn->getContentSize() / 2);
-				m_EquipVec[i]->btn->stopAllActions();
 				ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
 				m_EquipVec[i]->btn->runAction(scaleTo);
-				m_EquipVec[i]->btn->addChild(m_editProp);
-				m_editProp->release();
-				isEquipTouch = true;
-				break;
+				//GAME_UILAYER->getOperationMenu()->addDrugs(2001);
+				//ControlButton* btn = GAME_UILAYER->getOperationMenu()->getDrugsBtn();
+				if (m_EquipVec[i]->EquipmentType == m_editProp->m_EquipmentType) 
+				{
+					m_editProp->retain();
+					m_editProp->setOpacity(255);
+					GAME_UILAYER->removeChild(m_editProp, false);
+					//m_editProp->removeFromParent();
+					//GAME_UILAYER->removeObject(m_editProp,false);
+					m_editProp->setPosition(m_EquipVec[i]->btn->getContentSize() / 2);
+					m_EquipVec[i]->btn->stopAllActions();
+					if (m_EquipVec[i]->haveEquiped == true) 
+					{
+						m_EquipVec[i]->btn->removeAllChildren();
+					}
+					m_EquipVec[i]->btn->addChild(m_editProp);
+					m_EquipVec[i]->haveEquiped = true;
+					m_editProp->release();
+					isEquipTouch = true;
+					ScaleTo* scaleTo = ScaleTo::create(0.1f, 1.0f);
+					m_EquipVec[i]->btn->runAction(scaleTo);
+					break;
+				}
 				//m_propVec[m_editProp->getTag()]->removeFromParent();
 				//m_propVec[m_editProp->getTag()] = NULL;
 			}
